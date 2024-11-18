@@ -1,0 +1,118 @@
+.signUpPage {
+  background-color: #ecdfcc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center; /* 화면 중앙에 모든 요소를 배치 */
+  height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
+  padding: 0 40px; /* 좌우 여백 */
+}
+
+@media (max-width: 991px) {
+  .signUpPage {
+    padding: 80px 20px; /* 모바일에서 패딩을 조금 더 조정 */
+  }
+}
+
+/* card 박스를 제거하고 title만 중앙에 위치하도록 설정 */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* 타이틀을 중앙에 배치 */
+  width: 100%;
+  height: 50%; /* 화면의 절반을 차지하도록 설정 */
+  text-align: center;
+  padding: 0; /* 불필요한 패딩 제거 */
+}
+
+.title {
+  color: #3c3d37;
+  font: 700 240px 'Changa One', sans-serif; /* 텍스트 크기를 3배 정도 키움 */
+  margin: 0;
+  line-height: 1.1; /* 줄 간격을 조정하여 텍스트가 한 줄로 표시되도록 설정 */
+  white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+  word-break: keep-all; /* 텍스트가 자동으로 줄바꿈 되지 않도록 설정 */
+}
+
+@media (max-width: 991px) {
+  .title {
+    font-size: 180px; /* 모바일에서 글꼴 크기 축소 */
+    margin-top: 0;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column; /* 버튼들을 수직으로 배치 */
+  gap: 25px; /* 버튼들 사이의 간격을 25px로 설정 */
+  justify-content: center; /* 버튼을 수평 중앙에 배치 */
+  margin-top: 40px; /* 타이틀과 버튼 간 간격 */
+}
+
+.button {
+  border-radius: 6px; /* 버튼의 모서리를 살짝 둥글게 */
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자를 더 부드럽고 확장 */
+  width: 270px; /* 버튼 크기를 1.5배로 키움 */
+  height: 90px;
+  color: #697565;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px;
+  font: 700 28px 'BM HANNA_TTF', sans-serif; /* 볼드체로 설정 */
+  border: 2px solid #000;
+  transition: all 0.3s ease-in-out; /* 버튼에 호버 효과 추가 */
+}
+
+.button:hover {
+  background-color: #f0f0f0; /* 버튼 호버 시 배경색 변화 */
+  transform: scale(1.05); /* 버튼 크기 확장 */
+}
+
+@media (max-width: 991px) {
+  .button {
+    padding: 18px;
+    font-size: 24px;
+  }
+}
+
+.signUpButton {
+  border-radius: 6px; /* 회원가입 버튼도 모서리 둥글게 */
+  background-color: #bcbcbc;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 부드럽게 */
+  width: 270px; /* 버튼 크기를 1.5배로 키움 */
+  height: 90px;
+  color: #697565;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px;
+  font: 700 28px 'BM HANNA_TTF', sans-serif; /* 볼드체로 설정 */
+  border: 2px solid #000;
+  transition: all 0.3s ease-in-out; /* 버튼 호버 효과 추가 */
+}
+
+.signUpButton:hover {
+  background-color: #a8a8a8; /* 회원가입 버튼 호버 시 색상 변화 */
+  transform: scale(1.05); /* 버튼 크기 확장 */
+}
+
+@media (max-width: 991px) {
+  .signUpButton {
+    padding: 18px;
+    font-size: 24px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

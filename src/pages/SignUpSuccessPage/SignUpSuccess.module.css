@@ -1,0 +1,69 @@
+
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #ecdfcc; /* 배경 색상을 SignUpForm과 맞춤 */
+  border-radius: 18px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed; /* 화면 중앙에 고정 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  z-index: 1000; /* 다른 요소들 위에 배치 */
+}
+
+.successContainer h2 {
+  font-size: 24px;
+  color: #3c3d37;
+  margin-bottom: 10px;
+}
+
+.successContainer p {
+  font-size: 16px;
+  color: #555555;
+  margin-bottom: 20px;
+}
+
+.closeButton {
+  padding: 14px 28px;
+  background-color: rgba(60, 61, 55, 0.3);
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: #8a8a8a;
+}
+
+.closeButton:active {
+  background-color: #6e6e6e;
+  transform: translateY(2px);
+}
+
+.closeButton:focus {
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .successContainer h2 {
+    font-size: 20px;
+  }
+
+  .successContainer p {
+    font-size: 14px;
+  }
+
+  .closeButton {
+    font-size: 14px;
+  }
+}

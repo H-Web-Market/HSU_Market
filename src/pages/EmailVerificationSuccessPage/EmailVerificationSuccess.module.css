@@ -1,0 +1,324 @@
+.emailVerificationSuccess {
+    background-color: #ecdfcc;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    padding: 149px 80px;
+  }
+  
+  @media (max-width: 991px) {
+    .emailVerificationSuccess {
+      padding: 100px 20px;
+    }
+  }
+  
+  .card {
+    border-radius: 18px;
+    background-color: #ecdfcc;
+    align-self: flex-end;
+    width: 100%;
+    max-width: 1220px;
+    padding: 50px 18px;
+  }
+  
+  @media (max-width: 991px) {
+    .card {
+      max-width: 100%;
+    }
+  }
+  
+  .flexContainer {
+    gap: 20px;
+    display: flex;
+  }
+  
+  @media (max-width: 991px) {
+    .flexContainer {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 50%;
+    margin-left: 0;
+  }
+  
+  @media (max-width: 991px) {
+    .column {
+      width: 100%;
+    }
+  }
+  
+  .hsuTitle {
+    color: #3c3d37;
+    font: 400 350px Changa One, -apple-system, Roboto, Helvetica, sans-serif;
+  }
+  
+  @media (max-width: 991px) {
+    .hsuTitle {
+      max-width: 100%;
+      margin-top: 40px;
+      font-size: 40px;
+    }
+  }
+  
+  .marketTitle {
+    color: #3c3d37;
+    margin-top: 98px;
+    font: 400 170px Changa One, -apple-system, Roboto, Helvetica, sans-serif;
+  }
+  
+  @media (max-width: 991px) {
+    .marketTitle {
+      max-width: 100%;
+      margin-top: 40px;
+      font-size: 40px;
+    }
+  }
+  
+  .formContainer {
+    z-index: 10;
+    width: 558px;
+    max-width: 100%;
+    margin: -39px 0 0 54px;
+  }
+  
+  .formColumn {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 82%;
+    margin-left: 0;
+  }
+  
+  @media (max-width: 991px) {
+    .formColumn {
+      width: 100%;
+    }
+  }
+  
+  .formWrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    font-family: BM HANNA_TTF, -apple-system, Roboto, Helvetica, sans-serif;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  @media (max-width: 991px) {
+    .formWrapper {
+      max-width: 100%;
+      margin-top: 7px;
+    }
+  }
+  
+  .formInner {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    justify-content: flex-start;
+  }
+  
+  @media (max-width: 991px) {
+    .formInner {
+      max-width: 100%;
+    }
+  }
+  
+  .formContent {
+    border-radius: 10px;
+    display: flex;
+    max-width: 100%;
+    width: 450px;
+    flex-direction: column;
+  }
+  
+  .successMessage {
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 98px 45px 48px;
+    border: 1px solid #000;
+  }
+  
+  @media (max-width: 991px) {
+    .successMessage {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  }
+  
+  .successText {
+    display: flex;
+    width: 205px;
+    max-width: 100%;
+    flex-direction: column;
+  }
+  
+  .studentVerificationSuccess {
+    font-size: 36px;
+    line-height: 1;
+  }
+  
+  .confirmButton {
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    align-self: center;
+    margin-top: 76px;
+    width: 114px;
+    max-width: 100%;
+    font-size: 32px;
+    white-space: nowrap;
+    line-height: 1;
+    padding: 14px 21px;
+  }
+  
+  @media (max-width: 991px) {
+    .confirmButton {
+      margin-top: 40px;
+      white-space: initial;
+      padding: 0 20px;
+    }
+  }
+  
+  .inputField {
+    border-radius: 4px;
+    display: flex;
+    gap: 29px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    line-height: 1;
+    margin: -43px 25px 0;
+    padding: 17px;
+    border: 2px solid #000;
+  }
+  
+  @media (max-width: 991px) {
+    .inputField {
+      margin: 0 10px;
+    }
+  }
+  
+  .inputIcon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 24px;
+  }
+  
+  .inputPlaceholder {
+    flex-grow: 1;
+    width: 308px;
+    flex-basis: auto;
+    margin: auto 0;
+  }
+  
+  .sideColumn {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 18%;
+    margin-left: 20px;
+  }
+  
+  @media (max-width: 991px) {
+    .sideColumn {
+      width: 100%;
+    }
+  }
+  
+  .studentVerificationButton {
+    border-radius: 4px;
+    background-color: rgba(60, 61, 55, 0.3);
+    margin-top: 257px;
+    flex-grow: 1;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 19px 15px;
+    font: 400 20px/1 BM HANNA_TTF, -apple-system, Roboto, Helvetica, sans-serif;
+    border: 2px solid #000;
+  }
+  
+  @media (max-width: 991px) {
+    .studentVerificationButton {
+      margin-top: 40px;
+    }
+  }
+  
+  .nameInputField {
+    border-radius: 4px;
+    display: flex;
+    margin-top: 25px;
+    width: 400px;
+    max-width: 100%;
+    gap: 28px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 16px 17px;
+    font: 400 20px/1 BM HANNA_TTF, -apple-system, Roboto, Helvetica, sans-serif;
+    border: 2px solid #000;
+  }
+  
+  .nameInputIcon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 25px;
+  }
+  
+  .nameInputPlaceholder {
+    flex-grow: 1;
+    width: 308px;
+    flex-basis: auto;
+    margin: auto 0;
+  }
+  
+  .signUpButton {
+    border-radius: 4px;
+    background-color: #bcbcbc;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 48px;
+    width: 400px;
+    max-width: 100%;
+    color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 19px 70px;
+    font: 400 24px/1 BM HANNA_TTF, -apple-system, Roboto, Helvetica, sans-serif;
+    border: 2px solid #000;
+  }
+  
+  @media (max-width: 991px) {
+    .signUpButton {
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+  }
+  
+  .visually_hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
