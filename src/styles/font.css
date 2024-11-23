@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('../assets/font/BMHANNAPro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .bm-hanna-font {
+    font-family: 'BMHANNAPro', sans-serif;
+  }
+  
+  body {
+    font-family: sans-serif;
+  }
+
+/* @font-face {
+    font-family: 'Paperlogy';
+    src: url('../assets/font/Paperlogy-6SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Paperlogy', sans-serif;
+  } */
+  

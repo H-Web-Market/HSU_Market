@@ -1,0 +1,207 @@
+.productEdit {
+    background-color: wheat;
+    border-radius: 18px;
+    box-shadow: 0px 4px 4px #00000040;
+    position: relative;
+    height: auto; /* 높이를 auto로 변경하여 내용에 따라 조정 */
+    width: calc(100% - 200px); /* header와 동일하게 수정 */
+    margin-left: 150px; /* 사이드바 너비 + 여유 공간 */
+    margin-top: 15px; /* header와의 간격 */
+}
+
+
+.header {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    height:60px;
+    margin-top:10px;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.categoryText {
+    color:#68676e;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    margin-left: 80px;
+}
+
+.category {
+    font-size: 20px;
+    font-weight: bold;
+    width:570px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #D9D9D9; /* 버튼 색상 */
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.content {
+    display: flex;
+    gap: 20px; /* 이미지와 정보 간격 */
+}
+
+.productContent {
+    display: flex;
+    gap: 20px; /* 이미지와 정보 간격 */
+    flex-direction: row;
+}
+
+.userContent {
+    display: flex;
+    gap: 20px; /* 이미지와 정보 간격 */
+}
+
+
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    
+}
+
+.productImage {
+    width: 530px;
+    height: 430px; /* 비율 유지 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    margin-left: 70px;
+}
+
+.productInfoContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+}
+
+.productName {
+    font-size: 20px;
+    font-weight: bold;
+    width:550px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #D9D9D9; /* 버튼 색상 */
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    width:550px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #D9D9D9; /* 버튼 색상 */
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.description {
+    font-size: 20px;
+    font-weight: bold;
+    width:550px;
+    height:300px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #D9D9D9; /* 버튼 색상 */
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.editButton{
+    margin-left: 320px;
+    width:250px;
+    height:45px;
+    padding: 10px;
+    background-color: #697565; /* 버튼 색상 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.editImageButton {
+    margin-top:10px;
+    margin-left: 70px;
+    width:530px;
+    height:45px;
+    padding: 10px;
+    background-color: #ECDFCC; /* 버튼 색상 */
+    color: black;
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.chatButton:hover {
+    background-color: #45a049;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    margin-left: 57px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 20px;
+    font-weight: bold;
+    width:550px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #D9D9D9; /* 버튼 색상 */
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+.heart {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.likesCount {
+    font-size: 14px;
+}
+
+.timestamp {
+    font-size: 14px;
+    color: #888;
+    margin-top: 20px;
+}

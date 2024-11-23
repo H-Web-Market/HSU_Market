@@ -1,0 +1,74 @@
+.userProfile {
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  margin-top: 40px;
+  gap: 20px;
+  font-family: 'BM HANNA_TTF', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px 50px 30px 23px;
+  position: relative; /* Added to position absolute child */
+}
+
+.userInfo {
+  display: flex;
+  gap: 16px;
+  color: #3c3d37;
+}
+
+.profileImage {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.userId {
+  font-size: 20px;
+  margin: 0;
+}
+
+.userName {
+  font-size: 36px;
+  margin: 7px 0 0;
+}
+
+.userActions {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+
+.userRating {
+  display: flex;
+  gap: 16px;
+  font-size: 36px;
+  align-items: center;
+}
+
+.starIcon {
+  width: 55px;
+  height: 55px;
+}
+
+.ratingScore {
+  margin-top: 16px;
+}
+
+@media (max-width: 991px) {
+  .userProfile {
+      padding: 30px 20px;
+  }
+
+  .userActions {
+      right: 20px;
+  }
+}

@@ -1,0 +1,72 @@
+.ProfilePageContainer {
+    background-color: #f2f2f2;
+    display: flex;
+    padding: 0 70px 0 0;
+    gap: 40px 68px;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+  
+  .mainContent {
+    flex-grow: 1;
+    flex-basis: 0;
+    width: fit-content;
+    margin: auto 0;
+  }
+  
+  .pageHeader {
+    display: flex;
+    justify-content: space-between; /* 기존 정렬 유지 */
+    align-items: center;
+    position: relative; /* 타이틀 절대 위치 조정 위해 추가 */
+    width: 100%;
+    gap: 20px;
+}
+
+.pageTitle {
+    position: absolute; /* 부모 컨테이너 기준으로 정렬 */
+    left: 50%; /* 가로 중앙 정렬 */
+    transform: translateX(-50%); /* 중앙 정렬 보정 */
+    color: #3c3d37;
+    font-size: 48px;
+    margin: 0; /* 여백 제거 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+  
+  .userIcons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .notificationIcon {
+    width: 19px;
+    height: 21px;
+  }
+  
+  .userAvatar {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+  }
+  
+  .contentSection {
+    display: flex;
+    margin-top: 40px;
+    gap: 20px;
+    align-items: flex-start; /* 추가: 상단 정렬 */
+}
+  
+  @media (max-width: 991px) {
+    .ProfilePageContainer {
+      padding-right: 20px;
+    }
+  
+    .pageTitle {
+      font-size: 40px;
+    }
+  
+    .contentSection {
+      flex-direction: column;
+    }
+  }

@@ -1,0 +1,120 @@
+.addReviewContainer {
+    width: 519px;
+    height: 390px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* 세로 중앙 정렬 */
+    align-items: center;  /* 가로 중앙 정렬 */
+  }
+  
+.reviewTitle {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'BMHANNAPro', sans-serif;
+}
+
+  /* 별점 영역 스타일 */
+.starRating {
+    font-size: 30px;
+    color: #D9D9D9; /* 기본 별 색 */
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: center; /* 별들을 수평 중앙 정렬 */
+    align-items: center;     /* 별들을 수직 중앙 정렬 */
+}
+  
+.star {
+    margin: 0 5px;
+}
+
+.starIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.starIcon.inactive {
+    opacity: 0.2;  /* 클릭되지 않은 별은 투명도 80% */
+}
+  
+.starIcon.active {
+    opacity: 1;  /* 클릭된 별은 원래 이미지 */
+}
+
+.reviewInput {
+    width: 100%;
+    max-width: 437px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #D9D9D9;
+    border: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    font-family: 'BMHANNAPro', sans-serif;
+    box-sizing: border-box;
+    resize: none;  /* 크기 조정 비활성화 */
+    overflow-y: auto;
+    text-overflow: ellipsis; /* 내용이 길어지면 ...으로 표시 */
+}
+  
+.submitButton {
+    padding: 10px 20px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'BMHANNAPro', sans-serif;
+    max-width: 437px;  /* 최대 너비를 설정 */
+    margin-top: 20px;  /* 버튼과 입력창 사이의 간격 */
+    display: block;
+    margin: auto;
+}
+  
+.submitButton:hover {
+    opacity: 0.8;
+}
+  
+.submitButton:active {
+    transform: scale(0.95);
+}
+  
+.reviewModal {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+}
+  
+.closeReviewModal {
+    font-family: 'BMHANNAPro', sans-serif;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+}
+  
+.closeReviewModal:hover {
+    background-color: #D9D9D9;
+}
+
+
+  

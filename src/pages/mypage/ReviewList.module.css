@@ -1,0 +1,55 @@
+.reviewListSection {
+  width: 41%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  color: #3c3d37;
+  font: 400 24px 'BM HANNA_TTF', -apple-system, Roboto, Helvetica, sans-serif;
+  text-align: center;
+  margin: 0 0 15px 0; /* margin 수정 */
+  height: 35px; /* 제목 높이 고정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviewList {
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 22px 28px;
+  overflow-y: auto;
+  max-height: 500px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  scrollbar-width: thin;
+  scrollbar-color: #697565 #f0f0f0;
+}
+
+/* 스크롤바 스타일링 (Chrome, Safari, Edge) */
+.reviewList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reviewList::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.reviewList::-webkit-scrollbar-thumb {
+  background-color: #697565;
+  border-radius: 4px;
+}
+
+@media (max-width: 991px) {
+  .reviewListSection {
+      width: 100%;
+  }
+
+  .reviewList {
+      padding: 22px 20px;
+  }
+}
