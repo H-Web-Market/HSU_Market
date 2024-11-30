@@ -1,11 +1,57 @@
+.detailInformPageContainer {
+    background-color: #f2f2f2;
+    display: flex;
+    padding: 0 70px 0 0;
+    gap: 40px; /* 너비 간격 조정 */
+    overflow: hidden;
+}
+  
+.mainContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+}
+
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between; /* 기존 정렬 유지 */
+    align-items: center;
+    position: relative; /* 타이틀 절대 위치 조정 위해 추가 */
+    width: 100%;
+    gap: 20px;
+}
+
+.userIcons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+  
+.notificationIcon {
+    width: 19px;
+    height: 21px;
+}
+  
+.userAvatar {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+}
+
+.contentSection {
+    display: flex;
+    flex-direction: column; /* Content를 세로 방향으로 정렬 */
+    gap: 20px; /* Content 사이의 간격 */
+}
+
 .detailInform {
-    background-color: wheat;
+    background-color: white;
     border-radius: 18px;
     box-shadow: 0px 4px 4px #00000040;
     position: relative;
     height: auto; /* 높이를 auto로 변경하여 내용에 따라 조정 */
-    width: calc(100% - 200px); /* header와 동일하게 수정 */
-    margin-left: 150px; /* 사이드바 너비 + 여유 공간 */
+    width: calc(100%); /* header와 동일하게 수정 */
     margin-top: 15px; /* header와의 간격 */
 }
 

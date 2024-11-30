@@ -37,7 +37,7 @@ function Sidebar() {
       src: "https://cdn.builder.io/api/v1/image/assets/TEMP/0332f606a7a37e6d291e5be1211e986535552d8f8ef00677455498845de62d03?placeholderIfAbsent=true&apiKey=4ff31f8795cd4edc98e7741aaa589c6c",
       alt: "Add Product",
       label: "Add Product",
-      route: "/ProductRegist"
+      route: "/add-product"
     },
   ], []);
 

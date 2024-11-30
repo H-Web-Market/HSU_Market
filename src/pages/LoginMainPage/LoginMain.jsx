@@ -28,14 +28,14 @@ const LoginMain = () => {
           aria-label="Login"
           onClick={handleLoginClick} // 로그인 버튼에 클릭 이벤트 추가
         >
-          로그인
+          Login
         </button>
         <button
           className={styles.signUpButton}
           aria-label="Sign Up"
           onClick={handleSignUpClick} // 회원가입 버튼에 클릭 이벤트 추가
         >
-          회원가입
+          Sign Up
         </button>
       </nav>
     </main>

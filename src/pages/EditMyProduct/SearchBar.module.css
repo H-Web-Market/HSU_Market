@@ -1,0 +1,41 @@
+.searchForm {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 13px 18px;
+  }
+  
+  .searchInput {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    color: #68676e;
+    flex-grow: 1;
+    margin-left: 16px;
+  }
+  
+  .searchButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .searchIcon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }

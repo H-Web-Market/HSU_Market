@@ -1,0 +1,66 @@
+.mainContainer { 
+  background-color: #f2f2f2; 
+  display: flex; 
+  padding: 0 70px 0 0; 
+  gap: 40px 68px; /* Consistent gap setting */
+  overflow: hidden; 
+  flex-wrap: wrap; 
+} 
+ 
+.mainContent { 
+  flex-grow: 1; 
+  flex-basis: 0; 
+  width: 100%;  
+  margin: 0;    
+  padding-top: 55px;  
+} 
+ 
+.pageHeader { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  position: relative; 
+  width: 100%; 
+  gap: 20px; 
+  padding: 0; 
+} 
+ 
+.userIcons { 
+  display: flex; 
+  gap: 30px; 
+  align-items: center; 
+} 
+ 
+.notificationIcon { 
+  width: 19px; 
+  height: 21px; 
+} 
+ 
+.userAvatar { 
+  width: 43px; 
+  height: 43px; 
+  border-radius: 50%; 
+} 
+ 
+.contentSection { 
+  display: flex; 
+  flex-direction: column;  
+  margin-top: 40px; 
+  gap: 20px; 
+  align-items: flex-start; 
+} 
+ 
+@media (max-width: 991px) { 
+  .mainContainer { 
+    padding-right: 20px; 
+  } 
+ 
+  .sectionTitle { 
+    font-size: 33px; 
+    color: #3c3d37; 
+    text-align: center; 
+    width: 100%; 
+    margin: 20px 0; 
+    font-family: 'BM HANNA_TTF', sans-serif;
+  }
+}

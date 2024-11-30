@@ -1,57 +1,64 @@
 import React, { useState } from "react";
 import Sidebar from './SideBar';
-import Header from './Header';
-import Content from "../MainPage/Content";
-import DetailedInform from '../DetailedInformPage/DetailedInform';
-import image from "../data/image.png";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProductRegist from "../ProductRegistPage/ProductRegist";
-import ProductEdit from "../ProductEditPage/ProductEdit";
+import styles from "./Main.module.css";
+import SearchBar from "../mypage/SearchBar";
+import Products from "../MainPage/Products"; // Products의 실제 파일 경로로 수정
+import Banner from "../MainPage/Banner";
+import { useNavigate } from 'react-router-dom'; 
 
-export const Main = () => {
-    const [products, setProducts] = useState([
-        { title: "에어팟 프로 1", price: "200,000원", time: "1시간 전", imageSrc: image, isLiked: false },
-        { title: "바이레도 블랑쉬 50ml", price: "150,000원", time: "3시간 전", imageSrc: image, isLiked: false },
-        { title: "아이폰 13 프로 맥스", price: "1,000,000원", time: "7시간 전", imageSrc: image, isLiked: false },
-        { title: "커피 머신", price: "470,000원", time: "3일 전", imageSrc: image, isLiked: false },
-    ]);
+export const Main = ({ products, toggleLike }) => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const [searchTerm, setSearchTerm]=useState("");
+  const handleNotificationClick = () => {
+    navigate('/notification');
+  };
 
-    const handleAppProduct = (newProduct) => {
-        setProducts((prevProducts) => [...prevProducts, newProduct]);
-    };
+  const handleUserAvatarClick = () => {
+    navigate('/mypage');
+  };
 
-    const toggleLike = (productTitle) => {
-        setProducts((prevProducts) =>
-            prevProducts.map((product) =>
-                product.title === productTitle
-                    ? { ...product, isLiked: !product.isLiked } // 클릭한 제품의 isLiked 상태 반전
-                    : product
-            )
-        );
-    };
+  const handleSearch = (term) => {
+    setSearchTerm(term); // 검색어 상태 업데이트
+  };
 
-    const handleSearch = (term) => {
-        setSearchTerm(term); // 검색어 상태 업데이트
-    };
+  // 검색어를 통해 products 필터링
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-    return (
-        <Router>
-            <Sidebar />
-            <Header onSearch={handleSearch} />
-            <Routes>
-                <Route path="/home" element={<Content 
-                    products={products} 
-                    toggleLike={toggleLike}
-                    searchTerm={searchTerm}
-                />} />
-                <Route path="/plus" element={<ProductRegist onAddProduct={handleAppProduct} />} />
-                <Route path="/product/:title" element={<DetailedInform products={products} toggleLike={toggleLike} />} />
-                <Route path="/product/edit/:title" element={<ProductEdit products={products} onAddProduct={handleAppProduct}/>} />
-            </Routes>
-        </Router>
-    );
+  return (
+    <div className={styles.mainContainer}>
+      <Sidebar />
+      <main className={styles.mainContent}>
+        <header className={styles.pageHeader}>
+          <SearchBar onSearch={handleSearch} /> {/* onSearch prop 전달 */}
+          <div className={styles.userIcons}>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/03ed7ff2fb1e7c53557240672da85ebfc178133bd4f13717960dbae4d0118d17?placeholderIfAbsent=true&apiKey=4ff31f8795cd4edc98e7741aaa589c6c"
+              alt="Notifications"
+              className={styles.notificationIcon}
+              onClick={handleNotificationClick}
+              style={{ cursor: 'pointer' }}
+            />
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf7a9a8e05d2698d57ae5e99b196bf039513b5a28e9d9c00b4aa82e8636b86f6?placeholderIfAbsent=true&apiKey=4ff31f8795cd4edc98e7741aaa589c6c"
+              alt="User avatar"
+              className={styles.userAvatar}
+              onClick={handleUserAvatarClick}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+        </header>
+        <section className={styles.contentSection}>
+          <Banner />
+          <h2 className={styles.sectionTitle}>당신을 위한 추천</h2>
+          {/* 필터링된 products 전달 */}
+          <Products products={filteredProducts} toggleLike={toggleLike} />
+        </section>
+      </main>
+    </div>
+  );
 };
 
 export default Main;

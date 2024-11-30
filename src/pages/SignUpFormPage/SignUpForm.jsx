@@ -164,39 +164,38 @@ const SignUpForm = () => {
             'https://cdn.builder.io/api/v1/image/assets/TEMP/cab9a2e1392c31181c6e87d7b39e4677f1a2c6bdf2ba006a882331b978856d80',
             'Password icon'
           )}
-
-          <div className={styles.emailContainer}>
-            <div className={styles.inputContainer} style={{ margin: 0 }}>
-              <div className={styles.inputIcon}>
-                <img 
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a8555322897cddae69a812102d53e0c3cd25424ec8e0cf72371bf9f82f79958"
-                  alt="Email icon"
-                  className={styles.icon}
-                />
-              </div>
-              <input
-                type="email"
-                id="email"
-                className={styles.inputText}
-                placeholder="학교 이메일을 입력해 주세요"
-                value={formData.email}
-                onChange={handleInputChange}
+          
+        <div className={styles.EmailContainer}>
+          <div className={styles.EmailInputContainer} style={{ margin: 0 }}>
+            <div className={styles.inputIcon}>
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a8555322897cddae69a812102d53e0c3cd25424ec8e0cf72371bf9f82f79958"
+                alt="Email icon"
+                className={styles.icon}
               />
-              {errors.email && <div className={styles.error}>{errors.email}</div>}
             </div>
-            <button
-              type="button"
-              className={styles.studentVerification}
-              onClick={handleVerifyClick}
-              disabled={isVerified}
-            >
-              {isVerified ? '인증완료' : '학생 인증'}
-            </button>
-            {isVerified && (
-              <span className={styles.verificationSuccess}>인증 완료!</span>
-            )}
+            <input
+              type="email"
+              id="email"
+              className={styles.inputText}
+              placeholder="학교 이메일을 입력해 주세요"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            {errors.email && <div className={styles.error}>{errors.email}</div>}
           </div>
-
+          <button
+            type="button"
+            className={styles.studentVerification}
+            onClick={handleVerifyClick}
+            disabled={isVerified}
+          >
+            {isVerified ? '인증완료' : '학생 인증'}
+          </button>
+          {isVerified && (
+            <span className={styles.verificationSuccess}>인증 완료!</span>
+          )}
+        </div>
 
           {renderInput(
             'name',

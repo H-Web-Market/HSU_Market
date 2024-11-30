@@ -1,91 +1,36 @@
 .page {
-    display: flex;
-    flex-direction: row; /* 사이드바와 본문을 가로로 배치 */
-    height: 100vh; /* 화면 전체 높이를 차지 */
-    width: 100%; /* 화면 전체 너비를 차지 */
-    background-color: #ECDFCC;
-    overflow: hidden; /* 화면을 벗어난 내용은 숨김 */
-}
-
-.sidebar {
-    width:30px;
-    background-color: white;
-    color: black;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border-right: 1px solid #D9D9D9;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-  
-.sidebar li {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center; /* 세로 가운데 정렬 */
-    justify-content: center; /* 가로 가운데 정렬 */
-}
-  
-.sidebar li:hover {
-    background-color: #697565;
-    border-radius: 10px;
-}
-
-
-.sidebar li img {
-    width: 20px; /* 이미지 크기 */
-    height: 20px; /* 이미지 크기 */
-    margin-right: 0px;  /* 이미지와 텍스트 사이에 간격 추가 */
-}
-
-.sidebar li button img {
-    width: 20px; /* 이미지 크기 */
-    height: 20px; /* 이미지 크기 */
-    margin-right: 0px;  /* 이미지와 텍스트 사이에 간격 추가 */
-}
-
-.sidebar ul li button {
-    background: transparent;  /* 버튼 배경을 투명하게 */
-    border: none;  /* 테두리 없애기 */
-    padding: 0px;  /* 패딩 설정 */
-    cursor: pointer;  /* 마우스 오버 시 커서 변경 */
-}
-
-.sidebar li + li {
-    margin-top: 50px; /* 리스트 항목 간의 간격을 추가 */
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #ECDFCC;
+  overflow: hidden;
 }
 
 .chatArea {
-  display:block;
+  display: block;
   border-right: 1px solid #D9D9D9;
-  /* width: 390px; */
-  flex: 1;
+  width: 390px; /* chat.css와 동일한 너비 */
   height: 100vh;
+  flex-shrink: 0;
+  margin-left: 72px; /* 사이드바 너비만큼 여백 추가 */
 }
 
 .chatTitle {
   display: flex;
-  /* width: 390px; */
   padding: 12px;
   background-color: white;
-  justify-content: center;  /* 가로 중앙 정렬 */
-  align-items: center;  /* 세로 중앙 정렬 */
-  font-size: 24px;  /* 텍스트 크기 조정 */
-  font-weight: bold;  /* 텍스트를 더 굵게 */
-  border-bottom: 1px solid #D9D9D9; /* 하단에 얇은 선 추가 */
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 1px solid #D9D9D9;
 }
 
 .chatList {
   display: block;
-  /* width: 390px; */
-  height: 100vh;
+  height: calc(100vh - 53px); /* chatTitle 높이 제외 */
   background-color: white;
-  overflow-y: auto; /* 내용이 넘칠 때 스크롤이 생기도록 */
+  overflow-y: auto;
   flex-direction: column;
 }
 
@@ -96,8 +41,8 @@
 }
 
 .chatRoom {
-  display: flex; /* 수평 정렬 */
-  align-items: center; /* 항목들을 수직 중앙 정렬 */
+  display: flex;
+  align-items: center;
   height: 72px;
   background-color: white;
   transition: background-color 0.3s;
@@ -106,6 +51,11 @@
 
 .chatRoom:hover {
   background-color: #e6e6e6;
+}
+
+.selectedChatRoom .chatRoom {
+  background-color: #e6e6e6;  /* 호버 시와 동일한 색상 */
+  transition: background-color 0.3s;  /* 부드러운 전환 효과 */
 }
 
 .chatRoomName {
@@ -128,83 +78,78 @@
   height: 40px;
   border-radius: 4px;
   object-fit: cover;
-  margin-left: auto; /* 상품 이미지를 오른쪽 끝으로 밀어줌 */
-  margin-right: 16px; /* 오른쪽 여백 */
+  margin-left: auto;
+  margin-right: 16px;
 }
 
-/* 최근 대화 날짜 */
 .chatDate {
   font-size: 12px;
-  /* font-weight: bold; */
   color: #aaa;
   margin-left: 0;
 }
 
-/* 마지막 메시지 */
 .lastMessage {
   font-size: 14px;
-  /* font-weight: bold; */
   color: #666;
   margin-top: 10px;
-  white-space: nowrap; /* 텍스트가 길어져도 줄바꿈을 하지 않도록 */
-  overflow: hidden; /* 넘치는 텍스트 숨기기 */
-  max-width: 250px; /* 메시지 최대 길이 설정 (200px 예시) */
-  text-overflow: ellipsis; /* 넘치는 텍스트는 '...'으로 처리 */
-  flex-grow: 1; /* 나머지 공간을 차지하도록 */
-  min-width: 0; /* 최소 너비가 0이 되도록 설정, overflow 적용을 돕기 위함 */
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 250px;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  min-width: 0;
 }
 
 .chatRoomHeader {
   display: flex;
-  justify-content: flex-start; /* 이름과 날짜를 왼쪽으로 붙이기 */
-  gap: 5px; /* 이름과 날짜 사이의 간격을 조정 */
+  justify-content: flex-start;
+  gap: 5px;
 }
 
-.chatRoomcontents {
+.chatRoomContents {
   display: flex;
-  flex-direction: column; /* 이름과 메시지, 날짜를 세로로 정렬 */
-  justify-content: flex-start; /* 내용이 위에서 아래로 정렬되도록 */
-  flex-grow: 1; /* 나머지 공간을 차지하도록 */
-  overflow: hidden; /* 메시지가 넘칠 경우 숨김 */
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1;
+  overflow: hidden;
   max-width: 200px;
 }
 
 .chattingRoomArea {
-    display: flex;
-    flex-direction: column; /* 채팅 영역을 세로로 쌓기 */
-    /* flex-grow: 1;  */
-    flex: 2;  /* 채팅방 리스트의 2배 */
-    overflow: hidden;  /* 오버플로우가 생기지 않도록 숨김 */
-    background-color: #ECDFCC;
-    padding-bottom: 80px;
-    position: relative; /* 타이틀과 입력창을 고정시키기 위해 relative 설정 */
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  overflow: hidden;
+  background-color: #ECDFCC;
+  padding-bottom: 80px;
+  position: relative;
 }
 
 .chattingRoomArea.blurred {
   filter: blur(5px);
-  pointer-events: none; /* 클릭 비활성화 */
-  opacity: 0.6; /* 투명도 조절 */
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 .chattingTitle {
-    display: flex;
-    width: 100%;
-    /* padding: 12px; */
-    justify-content: center;  /* 가로 중앙 정렬 */
-    align-items: center;  /* 세로 중앙 정렬 */
-    height: 75px;
-    background-color: #D9D9D9;
-    position: relative; /* 버튼을 absolute로 배치하기 위한 기준 */  
-    font-family: 'BMHANNAPro', sans-serif; 
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  background-color: #D9D9D9;
+  position: relative;
+  font-family: 'BMHANNAPro', sans-serif;
 }
+
 .chattingTitle h2 {
-    font-size: 32px;  /* 텍스트 크기 조정 */
-    font-weight: bold;  /* 텍스트를 더 굵게 */
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .rating {
   font-size: 24px;
-  margin-left: 20px; /* 제목과 평점 사이 간격 */
+  margin-left: 20px;
 }
 
 .rating img {
@@ -213,176 +158,171 @@
 }
 
 .tradeButton {
-    background-color: #697565;  /* 거래완료 버튼 배경색 */
-    color: white;  /* 텍스트 색상 */
-    border: none;
-    width: 100px;
-    height: 50px;
-    padding: 5px 10px;
-    font-size: 20px;
-    /* font-weight: bold; */
-    font-family: 'BMHANNAPro', sans-serif;
-    border-radius: 4px;  /* 버튼 둥글게 만들기 */
-    transition: background-color 0.3s ease;
-    position: absolute; /* 버튼을 절대 위치로 배치 */
-    right: 20px; /* 오른쪽 끝에 배치 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  .tradeButton:hover {
-    opacity: 0.8;
-  }
-
-  .tradeButton:active {
-    transform: scale(0.95);  /* 클릭 시 크기 줄어듬 */
-  }
-
-  .chattingSend {
-    display: flex;
-    justify-content: center;  /* 가로 중앙 정렬 */
-    align-items: center;  /* 세로 중앙 정렬 */
-    width: 100%;
-    padding: 0px;
-    border-radius: 12px;
-    position: absolute;
-    bottom: 30px;
-  }
-  
-  .chattingSendInput {
-    width: 80%;  /* 입력창 너비 */
-    max-height: 20px;  /* 최소 높이 설정 */
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-right: 10px;
-    word-wrap: break-word;  /* 긴 단어가 넘치면 줄 바꿈 */
-    white-space: pre-wrap;  /* 공백과 줄 바꿈 유지 */
-    resize: none;  /* 크기 조정 비활성화 */
-  }
-  
-  .chattingSend button {
-    background-color: transparent; /* 버튼의 배경을 투명하게 설정 */
-    border: none; /* 버튼의 기본 테두리 제거 */
-    padding: 0;  /* 패딩 없애기 */
-  }
-  .chattingSend button img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain; /* 이미지 비율을 유지하면서 크기 맞추기 */
-  }
-
-  .chattingSend button:hover {
-    opacity: 0.8;  /* 마우스를 올렸을 때 투명도 변경 */
-  }
-  
-  .chattingSend button:active {
-    transform: scale(0.95);  /* 클릭 시 크기 줄어듬 */
-  }
-
-  .chatDateHeader {
-    font-size: 12px;
-    font-weight: bold;
-    padding: 5px 10px;  /* 상하/좌우 패딩 값 조정 */
-    margin: 5px 0;  /* 날짜 상하 간격 조정 */
-    max-width: 100px;  /* 최대 너비 제한 */
-    color: #FFFFFF;
-    margin-bottom: 10px;
-    text-align: center; /* 날짜 가운데 정렬 */
-    padding: 5px;
-    background-color: #69756599; /* 투명도 60% */
-    border-radius: 12px;
-    margin : auto;
-  }
-
-
-  .chatMessages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px;
-    scrollbar-width: thin; /* Firefox에서 스크롤바를 얇게 설정 */
-    scrollbar-color: #888 transparent; /* Firefox에서 스크롤바 색상 설정 (스크롤바 색상, 배경색) */
-  }
-  
-  .message {
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .myMessage {
-    justify-content: flex-end;
-  }
-  
-  .messageBubble {
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 60%;
-    background-color: #f0f0f0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  .myMessage .messageBubble {
-    background-color: #697565;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    margin-right: 20px;
-  }
-  
-  .otherMessage .messageBubble {
-    background-color: #ffffff;
-    margin-left: 20px;
-    font-weight: bold;
-  }
-
-  .messageDate {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 5px; /* 날짜와 메시지 텍스트 사이 간격 */
-    text-align: center; /* 가운데 정렬 */
-  }
-
-  .messageText {
-    margin-bottom: 5px;  /* 메시지 텍스트와 시간 사이의 간격 */
-  }
-  
-  .messageTime {
-    font-size: 12px;
-    /* font-weight: bold; */
-    text-align: right;
-  }
-
-  .reviewModal {
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    border-radius: 10px;
-    width: 400px;
-    height: 300px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    z-index: 1000;
+  background-color: #697565;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 50px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: 'BMHANNAPro', sans-serif;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  right: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
-  
+
+.tradeButton:hover {
+  opacity: 0.8;
+}
+
+.tradeButton:active {
+  transform: scale(0.95);
+}
+
+.chattingSend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0px;
+  border-radius: 12px;
+  position: absolute;
+  bottom: 30px;
+}
+
+.chattingSendInput {
+  width: 80%;
+  max-height: 20px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-right: 10px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  resize: none;
+}
+
+.chattingSend button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.chattingSend button img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.chattingSend button:hover {
+  opacity: 0.8;
+}
+
+.chattingSend button:active {
+  transform: scale(0.95);
+}
+
+.chatDateHeader {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin: 5px 0;
+  max-width: 100px;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: #69756599;
+  border-radius: 12px;
+  margin: auto;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.message {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.myMessage {
+  justify-content: flex-end;
+}
+
+.messageBubble {
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.myMessage .messageBubble {
+  background-color: #697565;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.otherMessage .messageBubble {
+  background-color: #ffffff;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.messageDate {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.messageText {
+  margin-bottom: 5px;
+}
+
+.messageTime {
+  font-size: 12px;
+  text-align: right;
+}
+
+.reviewModal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 10px;
+  width: 400px;
+  height: 300px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+}
+
 .closeReviewModal {
-    font-family: 'BMHANNAPro', sans-serif;
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 16px;
+  font-family: 'BMHANNAPro', sans-serif;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
 }
-  
+
 .closeReviewModal:hover {
-    background-color: #D9D9D9;
+  background-color: #D9D9D9;
 }
-  

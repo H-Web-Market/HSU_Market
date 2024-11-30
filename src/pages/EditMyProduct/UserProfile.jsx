@@ -5,13 +5,8 @@ import styles from './UserProfile.module.css';
 function UserProfile() {
   const navigate = useNavigate();
 
-  const handleEditProduct = () => {
-    navigate('/editMyProduct');
-  };
-
-  const handleLogout = () => {
-    // 로그아웃 로직을 여기에 추가할 수 있습니다
-    navigate('/login');
+  const handleEditComplete = () => {
+    navigate('/mypage');
   };
 
   return (
@@ -27,27 +22,13 @@ function UserProfile() {
           <h2 className={styles.userName}>hyundo</h2>
         </div>
       </div>
-      <div className={styles.userRating}>
-        <img 
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f1da4b2b400db017d8d253b01e51b24555fa6f9e79422aa23cc8243a49c55aeb?placeholderIfAbsent=true&apiKey=4ff31f8795cd4edc98e7741aaa589c6c" 
-          alt="" 
-          className={styles.starIcon} 
-        />
-        <span className={styles.ratingScore}>4.8</span>
-      </div>
       <div className={styles.userActions}>
         <div className={styles.actionButtons}>
           <button 
             className={styles.editButton} 
-            onClick={handleEditProduct}
+            onClick={handleEditComplete}
           >
-            상품 수정
-          </button>
-          <button 
-            className={styles.logoutButton} 
-            onClick={handleLogout}
-          >
-            로그아웃
+            수정 완료
           </button>
         </div>
       </div>

@@ -1,17 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import homeIcon from '../../assets/image/Home.png';
-import chatIcon from '../../assets/image/Chat.png';
-import heartIcon from '../../assets/image/Heart.png';
-import profileIcon from '../../assets/image/Profile.png';
-import plusIcon from '../../assets/image/Plus.png';
+import { useNavigate, useParams } from 'react-router-dom';
+import SideBar from './SideBar'; // 분리된 사이드바 컴포넌트 import
 import defaultProfile from '../../assets/image/DefaultProfile.png';
 import sendIcon from '../../assets/image/Send.png';
 import starIcon from '../../assets/image/Star.png';
 import AddReview from '../AddReviewPage/AddReview';
-
-import styles from './ChattingRoom.module.css'
+import styles from './ChattingRoom.module.css';
 
 // 상품 샘플 이미지 경로 
 import Product1Img from '../../assets/image/Product1.jpeg';
@@ -21,6 +15,7 @@ const ChattingRoom = () => {
   const { chatId } = useParams(); // 채팅방 ID 가져오기
   const navigate = useNavigate();  // navigate 함수 선언
 
+  const [selectedChatId, setSelectedChatId] = useState(parseInt(chatId));
   const [isComposing, setIsComposing] = useState(false);
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(null); // 상대방 평점 상태 추가
@@ -30,16 +25,13 @@ const ChattingRoom = () => {
     { id: 3, name: '상대방 이름 3', lastMessage: '마지막 메시지 3', profileImg: '', productImg: 'Product3Img', lastMessageDate: new Date() - 2592000000 }, // 1달 전
   ]);
 
-  // 프로필 이미지가 없을 경우 기본 프로필 이미지 사용
+  const [messages, setMessages] = useState({}); // 채팅방별 메시지를 저장하는 객체
+  const chatMessagesRef = useRef(null);  // 메시지 영역에 대한 ref 생성
+
   const getProfileImage = (profileImg) => {
     return profileImg || defaultProfile; // 기본 프로필 이미지 사용
   };
 
-
-  const [messages, setMessages] = useState({}); // 채팅방별 메시지를 저장하는 객체
-  const chatMessagesRef = useRef(null);  // 메시지 영역에 대한 ref 생성
-
-  // 채팅방의 메시지를 가져오는 함수 (채팅방 이동 시 호출)
   const loadMessagesForChatRoom = (chatId) => {
     if (!messages[chatId]) {
       setMessages(prevMessages => ({
@@ -56,12 +48,10 @@ const ChattingRoom = () => {
     loadMessagesForChatRoom(chatId); // 채팅방 ID에 맞는 메시지 로드
   }, [chatId]);
 
-  // 메시지 입력 시 상태 변경
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
 
-  // 메시지 전송 함수
   const handleSendMessage = () => {
     if (message.trim() !== "") {
       const newMessage = {
@@ -77,7 +67,6 @@ const ChattingRoom = () => {
           [chatId]: [...(prevMessages[chatId] || []), newMessage],
         };
 
-        // 채팅방 리스트의 마지막 메시지 업데이트
         setChatRooms(prevRooms =>
           prevRooms.map(room => {
             if (room.id === parseInt(chatId)) {
@@ -94,7 +83,6 @@ const ChattingRoom = () => {
     }
   };
 
-  // 메시지가 추가될 때마다 스크롤을 맨 아래로 이동
   useEffect(() => {
     if (chatMessagesRef.current) {
       chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
@@ -111,7 +99,6 @@ const ChattingRoom = () => {
     fetchRating();
   }, [messages, chatId]);
 
-  // 엔터 키를 눌렀을 때 메시지 전송
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !isComposing) {
       e.preventDefault(); // 기본 Enter 키 동작(줄바꿈)을 막음
@@ -119,7 +106,6 @@ const ChattingRoom = () => {
     }
   };
 
-  // 한글 조합 이벤트
   const handleCompositionStart = () => {
     setIsComposing(true); // 조합 시작
   };
@@ -129,14 +115,12 @@ const ChattingRoom = () => {
     setMessage(e.target.value); // 조합이 끝난 최종 텍스트 업데이트
   };
 
-  // 시간 포맷: 'hh:mm' 형식
   const formatTime = (timestamp) => {
     const hours = timestamp.getHours().toString().padStart(2, "0");
     const minutes = timestamp.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
   };
 
-  // 날짜 포맷: 'YYYY-MM-DD' 형식
   const formatDate = (timestamp) => {
     const year = timestamp.getFullYear();
     const month = (timestamp.getMonth() + 1).toString().padStart(2, '0');
@@ -144,7 +128,6 @@ const ChattingRoom = () => {
     return `${year}-${month}-${day}`;
   };
 
-  // 날짜 차이를 계산하여 적절한 형식으로 반환하는 함수
   const getChatDateLabel = (timestamp) => {
     const today = new Date();
     const diffTime = today - timestamp; // 밀리초 차이
@@ -169,7 +152,6 @@ const ChattingRoom = () => {
     }    
   };
 
-  // 날짜가 같은지 비교하는 함수
   const isSameDate = (date1, date2) => {
     return formatDate(date1) === formatDate(date2);
   };
@@ -183,47 +165,22 @@ const ChattingRoom = () => {
     toggleReviewModal();  // 거래 완료 시 모달 열기
   };
 
+  const handleChatRoomClick = (id) => {
+    navigate(`/chat/${id}`);
+    setSelectedChatId(id); // 선택된 채팅방 ID 업데이트
+  };
+
   return (
     <div className={styles.page}>
-      <div className={styles.sidebar}>
-        <ul>
-          <li>
-            <img src='' alt="로고" />
-          </li>
-          <li>
-            <button onClick={() => navigate('/')}>
-              <img src={homeIcon} alt="홈" />
-            </button>
-          </li>
-          <li>
-            <button onClick={() => navigate('/')}>
-              <img src={chatIcon} alt="채팅" />
-            </button>
-          </li>
-          <li>
-            <button onClick={() => navigate('/')}>
-              <img src={heartIcon} alt="찜" />
-            </button>
-          </li>
-          <li>
-            <button onClick={() => navigate('/')}>
-              <img src={profileIcon} alt="프로필" />
-            </button>
-          </li>
-          <li>
-            <button onClick={() => navigate('/')}>
-              <img src={plusIcon} alt="상품추가" />
-            </button>
-          </li>
-        </ul>
-      </div>
+      <SideBar /> {/* 사이드바 컴포넌트 */}
 
       <div className={styles.chatArea}>
         <div className={styles.chatTitle}>채팅</div>
         <div className={styles.chatList}>
           <ul>
             {chatRooms.map((chatRoom) => (
-              <li key={chatRoom.id} onClick={() => navigate(`/chat/${chatRoom.id}`)}>
+              <li key={chatRoom.id} onClick={() => handleChatRoomClick(chatRoom.id)} 
+              className={selectedChatId === chatRoom.id ? styles.selectedChatRoom : ''}>
                 <div className={styles.chatRoom}>
                   <img className={styles.profileImg} src={getProfileImage(chatRoom.profileImg)} alt={`Profile ${chatRoom.id}`} />
                   <div className={styles.chatRoomContents}>

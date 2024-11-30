@@ -1,95 +1,36 @@
 .page {
     display: flex;
-    flex-direction: row; /* 사이드바와 본문을 가로로 배치 */
-    height: 100vh; /* 화면 전체 높이를 차지 */
-    width: 100%; /* 화면 전체 너비를 차지 */
+    height: 100vh;
+    width: 100%;
     background-color: #ECDFCC;
-    overflow: hidden; /* 화면을 벗어난 내용은 숨김 */
-}
-
-.sidebar {
-    width:30px;
-    background-color: white;
-    color: black;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border-right: 1px solid #D9D9D9;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-  
-.sidebar li {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center; /* 세로 가운데 정렬 */
-    justify-content: center; /* 가로 가운데 정렬 */
-}
-  
-.sidebar li:hover {
-    background-color: #697565;
-    border-radius: 10px;
-}
-
-.sidebar li i {
-    font-size: 20px;  /* 아이콘 크기 고정 */
-    transition: none;  /* 호버 시 아이콘 크기 변화 방지 */
-}
-
-.sidebar li img {
-    width: 20px; /* 이미지 크기 */
-    height: 20px; /* 이미지 크기 */
-    margin-right: 0px;  /* 이미지와 텍스트 사이에 간격 추가 */
-}
-
-.sidebar li button img {
-    width: 20px; /* 이미지 크기 */
-    height: 20px; /* 이미지 크기 */
-    margin-right: 0px;  /* 이미지와 텍스트 사이에 간격 추가 */
-}
-
-.sidebar ul li button {
-    background: transparent;  /* 버튼 배경을 투명하게 */
-    border: none;  /* 테두리 없애기 */
-    padding: 0px;  /* 패딩 설정 */
-    cursor: pointer;  /* 마우스 오버 시 커서 변경 */
-}
-
-.sidebar li + li {
-    margin-top: 50px; /* 리스트 항목 간의 간격을 추가 */
+    overflow: hidden;
 }
 
 .chatArea {
-    display:block;
+    display: block;
     border-right: 1px solid #D9D9D9;
     width: 390px;
     height: 100vh;
-    flex-shrink: 0; /* 고정 크기 */
+    flex-shrink: 0;
+    margin-left: 72px; /* sideBar의 전체 너비(40px + 32px padding)만큼 여백 추가 */
 }
 
 .chatTitle {
     display: flex;
-    /* width: 390px; */
     padding: 12px;
     background-color: white;
-    justify-content: center;  /* 가로 중앙 정렬 */
-    align-items: center;  /* 세로 중앙 정렬 */
-    font-size: 24px;  /* 텍스트 크기 조정 */
-    font-weight: bold;  /* 텍스트를 더 굵게 */
-    border-bottom: 1px solid #D9D9D9; /* 하단에 얇은 선 추가 */
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid #D9D9D9;
 }
 
 .chatList {
     display: block;
-    /* width: 390px; */
-    height: 100vh;
+    height: calc(100vh - 53px); /* chatTitle 높이를 제외한 높이 */
     background-color: white;
-    overflow-y: auto; /* 내용이 넘칠 때 스크롤이 생기도록 */
+    overflow-y: auto;
     flex-direction: column;
 }
 
@@ -100,8 +41,8 @@
 }
 
 .chatRoom {
-    display: flex; /* 수평 정렬 */
-    align-items: center; /* 항목들을 수직 중앙 정렬 */
+    display: flex;
+    align-items: center;
     height: 72px;
     background-color: white;
     transition: background-color 0.3s;
@@ -116,7 +57,7 @@
     font-weight: bold;
     font-size: 14px;
     margin-right: 5px;
-  }
+}
 
 .profileImg {
     width: 40px;
@@ -132,46 +73,39 @@
     height: 40px;
     border-radius: 4px;
     object-fit: cover;
-    margin-left: auto; /* 상품 이미지를 오른쪽 끝으로 밀어줌 */
-    margin-right: 16px; /* 오른쪽 여백 */
+    margin-left: auto;
+    margin-right: 16px;
 }
 
-/* 최근 대화 날짜 */
 .chatDate {
     font-size: 12px;
     color: #aaa;
     margin-left: 0;
-  }
+}
   
-  /* 마지막 메시지 */
-  .lastMessage {
+.lastMessage {
     font-size: 14px;
     color: #666;
     margin-top: 10px;
-    white-space: nowrap; /* 텍스트가 길어져도 줄바꿈을 하지 않도록 */
-    overflow: hidden; /* 넘치는 텍스트 숨기기 */
-    max-width: 250px; /* 메시지 최대 길이 설정 (200px 예시) */
-    text-overflow: ellipsis; /* 넘치는 텍스트는 '...'으로 처리 */
-    flex-grow: 1; /* 나머지 공간을 차지하도록 */
-    min-width: 0; /* 최소 너비가 0이 되도록 설정, overflow 적용을 돕기 위함 */
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 250px;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    min-width: 0;
 }
 
 .chatRoomHeader {
     display: flex;
-    justify-content: flex-start; /* 이름과 날짜를 왼쪽으로 붙이기 */
-    gap: 5px; /* 이름과 날짜 사이의 간격을 조정 */
+    justify-content: flex-start;
+    gap: 5px;
 }
 
-.chatRoomcontents {
+.chatRoomContents {
     display: flex;
-    flex-direction: column; /* 이름과 메시지, 날짜를 세로로 정렬 */
-    justify-content: flex-start; /* 내용이 위에서 아래로 정렬되도록 */
-    flex-grow: 1; /* 나머지 공간을 차지하도록 */
-    overflow: hidden; /* 메시지가 넘칠 경우 숨김 */
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    overflow: hidden;
     max-width: 200px;
 }
-
-
-
-
-

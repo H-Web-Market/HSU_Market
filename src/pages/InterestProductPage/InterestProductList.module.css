@@ -1,0 +1,27 @@
+.ProductList{
+    height: auto;
+    position:relative;
+    width:100%;
+    margin-top:20px;
+    display: flex; /* Flexbox 활성화 */
+    flex-wrap: wrap; /* 카드가 줄 바꿈 가능하도록 설정 */
+    justify-content: flex-start; /* 카드 간의 간격을 균등하게 배치 */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;  /* 기존의 상단 정렬 유지 */
+    margin-top: 40px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+
+.sectionTitle {
+    font-size: 33px;
+    color: #3c3d37;
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'BM HANNA_TTF', sans-serif; /* EditMyProductPage 스타일 유지 */
+  }

@@ -6,8 +6,8 @@ import styles from './ProductCard.module.css';
 function ProductCard({ id, image, price, name, time }) {
   const navigate = useNavigate();
 
-  const handleDetailClick = () => {
-    navigate(`/product-detail/${id}`);
+  const handleNavigate = (title) => {
+    navigate(`/DetailedInform/${title}`);
   };
 
   return (
@@ -18,7 +18,7 @@ function ProductCard({ id, image, price, name, time }) {
       <p className={styles.productTime}>{time}</p>
       <button
         className={styles.detailButton}
-        onClick={handleDetailClick}
+        onClick={() => handleNavigate(name)}
       >
         상품 상세
       </button>

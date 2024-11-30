@@ -4,7 +4,7 @@
     box-shadow: 0px 4px 4px #00000040;
     height:250px;
     position: relative;
-    width:1300px;
+    width:100%;
     display: flex; /* Flexbox로 설정 */
     align-items: center; /* 수직 중앙 정렬 */
 }

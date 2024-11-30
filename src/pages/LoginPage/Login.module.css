@@ -70,13 +70,15 @@
   background-color: #bcbcbc;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
   margin-top: 40px;
+  text-align: center;
   width: 100%;
-  max-width: 480px;
-  padding: 19px 70px;
-  font: 400 24px/1 'BM HANNA_TTF', -apple-system, Roboto, Helvetica, sans-serif;
+  max-width: 200px;
+  padding: 10px;
+  font: 700 27px 'BM HANNA_TTF', sans-serif; /* 볼드체로 설정 */
   border: 2px solid #000;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
 }
 
 .loginButton:hover {

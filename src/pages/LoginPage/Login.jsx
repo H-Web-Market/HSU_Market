@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import InputField from './InputField';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [studentId, setStudentId] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (studentId === '2071122' && password === '1234') {
       setErrorMessage('');
       console.log('로그인 성공!');
+      navigate('/home');
     } else {
       setErrorMessage('로그인에 실패했습니다. 학번, 비밀번호를 다시 확인해주세요.');
     }
@@ -37,7 +41,7 @@ const LoginPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className={styles.loginButton}>로그인</button>
+        <button type="submit" className={styles.loginButton}>Login</button>
         {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
       </form>
     </main>

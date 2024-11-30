@@ -1,0 +1,58 @@
+.productCard {
+  background-color: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  gap: 15px;
+}
+
+.productImage {
+  width: 100%;
+  aspect-ratio: 1.3;
+  object-fit: cover;
+  border-radius: 19px;
+}
+
+.productPrice {
+  font-size: 24px;
+  color: #3c3d37;
+  margin: 0;
+}
+
+.productTitle {
+  font-family: 'Inter', sans-serif;
+  color: #3c3d37;
+  margin: 0;
+}
+
+.timePosted {
+  color: #3c3d37;
+  font-family: 'Inter', sans-serif;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.deleteButton,
+.editButton {
+  flex: 1;
+  border: none;
+  border-radius: 9px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: #ecdfcc;
+}
+
+.editButton {
+  background-color: #697565;
+  color: #fff;
+}
