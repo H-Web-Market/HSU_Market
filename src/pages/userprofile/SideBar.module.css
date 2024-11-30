@@ -1,12 +1,18 @@
 .sideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #65646a;
   width: 40px;
-  padding: 30px 16px 652px;
+  height: 100vh;
+  padding: 30px 16px;
   font: 400 19px 'Font Awesome 5 Free', -apple-system, Roboto, Helvetica, sans-serif;
+  border-right: 1px solid #D9D9D9;
+  z-index: 1000;
 }
 
 .logo {
@@ -21,18 +27,17 @@
 
 .navList {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 50px;
+  width: 100%;
 }
 
 .navButton {
   all: unset;
   width: 24px;
   height: 23px;
-  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,8 +67,7 @@
 
 @media (max-width: 991px) {
   .sideBar {
-    padding-bottom: 100px;
-    display: none;
+    padding: 30px 16px;
     width: 50px;
   }
 

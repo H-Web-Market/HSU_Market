@@ -6,7 +6,7 @@ const SignUpSuccess = () => {
   const navigate = useNavigate();
 
   const handleClose = () => {
-    navigate('/LoginMain'); // SignUpPage.jsx로 돌아가는 경로 설정
+    navigate('/Login'); // SignUpPage.jsx로 돌아가는 경로 설정
   };
 
   return (

@@ -1,11 +1,10 @@
-
 .loginContainer {
   background-color: #ecdfcc;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   padding: 0 20px;
 }
 
@@ -31,8 +30,6 @@
   width: 100%;
   max-width: 480px;
 }
-
-
 
 .inputContainer {
   border-radius: 8px; /* SignUpForm과 동일 */
@@ -65,14 +62,23 @@
   background-color: #fff; /* 입력 칸의 배경색 설정 */
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: center;  /* Center the buttons in the container */
+  gap: 20px;  /* Space between buttons */
+  margin-top: 40px;  /* Space above the buttons */
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 480px;  /* Same max-width for alignment with form container */
+}
+
 .loginButton {
   border-radius: 4px;
-  background-color: #bcbcbc;
+  background-color: #ffffff;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
-  margin-top: 40px;
   text-align: center;
   width: 100%;
-  max-width: 200px;
+  max-width: 150px;
   padding: 10px;
   font: 700 27px 'BM HANNA_TTF', sans-serif; /* 볼드체로 설정 */
   border: 2px solid #000;
@@ -82,8 +88,30 @@
 }
 
 .loginButton:hover {
-  background-color: #8a8a8a;
+  background-color: #f0f0f0;
+  transform: scale(1.05); /* 버튼 크기 확장 */
 }
+
+.signUpButton {
+  border-radius: 4px;
+  background-color: #bcbcbc;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 150px;
+  padding: 10px;
+  font: 700 27px 'BM HANNA_TTF', sans-serif; /* 볼드체로 설정 */
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+}
+
+.signUpButton:hover {
+  background-color: #a8a8a8; /* 회원가입 버튼 호버 시 색상 변화 */
+  transform: scale(1.05); /* 버튼 크기 확장 */
+}
+
 
 .errorMessage {
   color: red;

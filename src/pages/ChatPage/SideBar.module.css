@@ -27,11 +27,10 @@
 
 .navList {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 50px;
   width: 100%;
 }
 
@@ -39,7 +38,6 @@
   all: unset;
   width: 24px;
   height: 23px;
-  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

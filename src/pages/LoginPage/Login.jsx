@@ -10,6 +10,10 @@ const LoginPage = () => {
   
   const navigate = useNavigate();
 
+  const handleSignUpClick = () => {
+    navigate('/SignUpForm'); // "/SignUpForm"으로 이동
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (studentId === '2071122' && password === '1234') {
@@ -41,8 +45,17 @@ const LoginPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className={styles.loginButton}>Login</button>
         {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
+        <div className={styles.buttonContainer}>
+          <button type="submit" className={styles.loginButton}>Login</button>
+          <button
+            className={styles.signUpButton}
+            aria-label="Sign Up"
+            onClick={handleSignUpClick} // 회원가입 버튼에 클릭 이벤트 추가
+          >
+            Sign Up
+          </button>
+        </div>
       </form>
     </main>
   );
