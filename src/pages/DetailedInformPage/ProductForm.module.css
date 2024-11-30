@@ -1,0 +1,76 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: rgb(104, 103, 110);
+    font: 400 20px BM HANNA_TTF, -apple-system, Roboto, Helvetica, sans-serif;
+    width:500px;
+    margin-left:30px;
+    margin-bottom: 20px;
+  }
+
+  .formInput{
+    border-radius: 12px;
+    background-color: rgb(217, 217, 217);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 15px 30px;
+    width: 100%;
+    border: none;
+  }
+
+  .formTextarea{
+    border-radius: 12px;
+    background-color: rgb(217, 217, 217);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 15px 30px;
+    width: 100%;
+    border: none;
+    height:300px;
+  }
+
+  .selectInput{
+    width:565px;
+  }
+  
+  .formTextarea {
+    min-height: 216px;
+    resize: vertical;
+  }
+  
+  .categorySelect {
+    width:100%;
+    position: relative;
+  }
+  
+  .dropdownIcon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    pointer-events: none;
+  }
+  
+  .submitButton {
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    background-color: rgb(105, 117, 101);
+    color: #fff;
+    padding: 10px;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    width: 565px;
+  }
+  
+  @media (max-width: 991px) {
+    .formInput,
+    .formTextarea,
+    .selectInput {
+      padding: 15px 20px;
+    }
+  
+    .submitButton {
+      padding: 17px 20px;
+    }
+  }

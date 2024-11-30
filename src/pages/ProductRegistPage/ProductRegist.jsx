@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "./ProductRegist.module.css";
-import simpleLineIcon from "../data/simpleLineIcon.png";
-import { SplitButton } from 'primereact/splitbutton';
 import Sidebar from "../mypage/SideBar";
 import SearchBar from "../mypage/SearchBar";
 import { useNavigate } from 'react-router-dom';
+import { ImageUpload } from "./ImageUpload";
+import { ProductForm } from "./ProductForm";
 
 export const ProductRegist = ({ onAddProduct }) => {
     const [title, setTitle] = useState('');
@@ -90,64 +90,20 @@ export const ProductRegist = ({ onAddProduct }) => {
                 <section className={styles.contentSection}>
                     <div className={styles.productRegist}>
                         <div className={styles.header}>
-                            <h1 className={styles.title}>상세 등록</h1>
+                            <h1 className={styles.title}>상품 등록</h1>
                         </div>
-                    <div className={styles.productContent}>
-                        <div className={styles.imageContainer}
-                        style={{ backgroundImage: imageSrc ? `url(${imageSrc})` : null }}>
-                            {/* 이미지가 선택되지 않았을 때만 렌더링 */}
-                            {!imageSrc && (
-                                <>
-                                <img
-                                className={styles.simpleIcon}
-                                alt="Simple line icon"
-                                src={simpleLineIcon}
-                                />
-                                <input 
-                                className={styles.textWrapper}
-                                type="file"
-                                accept="image/*"
-                                placeholder="판매 물품에 대한 사진을 등록해주세요" 
-                                onChange={handleImageChange} 
-                                />
-                                </>
-                            )}
+                        <div className={styles.productContent}>
+                        
+                            <div className={styles.imageContainer}>
+                                <ImageUpload/>
+                            </div>
+
+                            <div className={styles.productInfoContainer}>
+                                <ProductForm/>
+                            </div>
                         </div>
-
-                <div className={styles.productInfoContainer}>
-                    <input 
-                        className={styles.productName}
-                        type="text" 
-                        placeholder="제품명 입력" 
-                        value={title} 
-                        onChange={(e) => setTitle(e.target.value)} 
-                    />
-                    <input 
-                        className={styles.price}
-                        type="text" 
-                        placeholder="제품 판매가" 
-                        value={price} 
-                        onChange={(e) => setPrice(e.target.value)} 
-                    />
-                    <textarea 
-                        className={styles.description}
-                        placeholder="제품 상세 알림" 
-                        value={description} 
-                        onChange={(e) => setDescription(e.target.value)} 
-                    />
-                    <SplitButton 
-                        label={category || "상품 카테고리 선택"} 
-                        model={categoryItems} 
-                        className={styles.category} 
-                        onClick={(e) => e.preventDefault()} // 기본 동작 방지
-                        menuStyle={{backgroundColor:"white", width:"530px" }} // 드롭다운 메뉴의 폭을 전체 버튼 폭으로 설정
-                    />
-
-                    <button className={styles.registButton} onClick={handleSubmit}>등록하기</button>
-                </div>
-            </div>
-        </div>  
-          </section>
+                    </div>  
+                </section>
         </main>
       </div>
 

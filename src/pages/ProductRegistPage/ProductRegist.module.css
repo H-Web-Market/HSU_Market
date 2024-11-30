@@ -39,6 +39,7 @@
 }
 
 .contentSection {
+    width:100%;
     display: flex;
     flex-direction: column; /* Content를 세로 방향으로 정렬 */
     gap: 20px; /* Content 사이의 간격 */
@@ -63,6 +64,7 @@
     flex-direction: column; /* 세로 방향으로 정렬 */
     height:60px;
     margin-top:10px;
+    margin-bottom: 10px;
 }
 
 .title {
@@ -72,10 +74,22 @@
 
 
 .productContent {
+
     display: flex;
     gap: 20px; /* 이미지와 정보 간격 */
     flex-direction: row;
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
 }
+
+.productInfoContainer {
+    flex: 1; /* 남은 공간을 모두 차지하도록 설정 */
+    max-width: 400px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+    margin-left: 100px;
+}
+
 
 
 .productImage {
@@ -85,13 +99,6 @@
     margin-left: 70px;
 }
 
-.productInfoContainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column; 
-    position: relative;
-    left:100px;
-}
 
 .productName {
     font-size: 20px;
@@ -148,16 +155,17 @@
 }
 
 .registButton {
-    margin-left: 10px;
-    width:550px;
+    width:570px;
     height:45px;
     padding: 10px;
     background-color: #697565; /* 버튼 색상 */
-    color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     margin-bottom: 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
 }
 
 .chatButton:hover {
@@ -174,7 +182,6 @@
 .imageContainer{
     justify-content: center; /* 가운데 정렬 */  
     display: flex;
-    background-color: #D9D9D9;
     height: 448px;
     left:50px;
     position:relative;
@@ -197,3 +204,38 @@
     top:279px;
     white-space: nowrap;
 }
+
+/**/
+
+.uploadContainer {
+    border-radius: 19px;
+    background-color: rgba(217, 217, 217, 0.8);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 163px 80px;
+  }
+  
+  .uploadContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 296px;
+  }
+  
+  .uploadIcon {
+    width: 70px;
+  }
+  
+  .uploadText {
+    margin-top: 24px;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  @media (max-width: 991px) {
+    .uploadContainer {
+      padding: 100px 20px;
+    }
+  }

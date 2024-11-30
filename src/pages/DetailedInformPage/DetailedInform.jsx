@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import avatar from "../data/avatar.png";
-import heart from "../data/heart.svg";
-import emptyHeart from "../data/emptyheart.png";
 import styles from "./DetailedInform.module.css";
 import Sidebar from "../mypage/SideBar";
 import SearchBar from "../mypage/SearchBar";
+import { LikeCounter } from "./LikeCounter";
+import { UserInfo } from "./UserInfo";
+import { ProductForm } from "./ProductForm";
 
 export const DetailedInform = ({ products, toggleLike }) => {
     const { title } = useParams(); // URL 파라미터에서 제목 가져오기
@@ -52,44 +52,54 @@ export const DetailedInform = ({ products, toggleLike }) => {
                 </div>
             </header>
             <section className={styles.contentSection}>
-                <div className={styles.detailInform}>
+                <div className={styles.detailedInform}>
                     <div className={styles.header}>
                         <h1 className={styles.title}>상세 정보</h1>
                     </div>
-                    <h1 className={styles.categoryText}>카테고리 : 생활 가전</h1>
+                    <div className={styles.contentWrapper}>
+                        <section className={styles.productInfo}>
+                            <nav className={styles.category} aria-label="Product category">
+                                카테고리 &gt; 생활 가전
+                            </nav>
+                            <img
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/56e760a1f263e8e1d80e01b05702795a6eb8982a1c1b293519e37746554e9467?placeholderIfAbsent=true&apiKey=8c4d60d027684d439facb424f5fad44b"
+                            className={styles.productImage}
+                            alt="Coffee machine product"
+                            />
+                        </section>
+                        <section className={styles.detailsSection}>
+                            <ProductForm/>
+                        </section>
+                    </div>
+
+                    <footer className={styles.productActions}>
+                        <div className={styles.likeSection}>
+                            <button className={styles.likeButton} aria-label="좋아요">
+                                <img
+                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/bbbd14404ec534286996716d6f4c030bdcb0df60d4a929d9ff5b98d91475c250?placeholderIfAbsent=true&apiKey=8c4d60d027684d439facb424f5fad44b"
+                                alt=""
+                                className={styles.likeIcon}
+                                />
+                            </button>
+                            <span className={styles.likeCount}>32</span>
+                        </div>
+                        <div className={styles.actionButtons}>
+                            <button className={styles.chatButton}>채팅하기</button>
+                            <div className={styles.sellerInfo}>
+                                <img
+                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/7034da8a03ce4b89697220952b75e5bb70040125bb2f96edb292d0a74c5dcb1f?placeholderIfAbsent=true&apiKey=8c4d60d027684d439facb424f5fad44b"
+                                className={styles.sellerAvatar}
+                                alt=""
+                                />
+                            <span className={styles.sellerName}>hyundo</span>
+                            </div>
+                        </div>
+                    </footer>
+
+        
                     
-                <div className={styles.productContent}>
-                    <div className={styles.imageContainer}>
-                        <img src={product.imageSrc} alt="Product" className={styles.productImage} />
-                    </div>
                     
-                    <div className={styles.productInfoContainer}>
-                        <div className={styles.productName}>{product.title}</div>
-                        <div className={styles.price}>{product.price}</div>
-                        <div className={styles.description}>{product.description}</div>
-                    </div>
                 </div>
-                
-                <div className={styles.userContent}>
-                    <div className={styles.likes}>
-                    <img 
-                        className={styles.heart} 
-                        alt="Heart" 
-                        src={product.isLiked ? heart : emptyHeart} 
-                        onClick={() => toggleLike(product.title)} // 하트 클릭 시 상태 변경
-                    />
-                    <span className={styles.likesCount}>32</span>
-                </div>
-                <button className={styles.chatButton} onClick={handleChatBtnClick}>채팅하기</button>
-                
-                    <div className={styles.userInfo}>
-                        <span className={styles.username} onClick={handleUserAvatarClick}>
-                            <img className={styles.avatar} alt="Avatar" src={avatar} />
-                            hyundo
-                        </span>
-                    </div>
-                </div>
-                </div>  
             </section>
         </main>
     </div>
