@@ -14,17 +14,39 @@ const LoginPage = () => {
     navigate('/SignUpForm'); // "/SignUpForm"으로 이동
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (studentId === '2071122' && password === '1234') {
-      setErrorMessage('');
-      console.log('로그인 성공!');
-      navigate('/home');
-    } else {
-      setErrorMessage('로그인에 실패했습니다. 학번, 비밀번호를 다시 확인해주세요.');
+    setErrorMessage(''); // 이전 오류 메시지 초기화
+  
+    try {
+      const response = await fetch('https://borhg6i9sk.execute-api.ap-northeast-2.amazonaws.com/web_login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          student_id: studentId,
+          password: password,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('서버 응답 오류');
+      }
+  
+      const data = await response.json();
+      if (data.success) {
+        console.log('로그인 성공:', data);
+        navigate('/home'); // 로그인 성공 시 홈 화면으로 이동
+      } else {
+        setErrorMessage(data.message || '로그인에 실패했습니다. 학번, 비밀번호를 다시 확인해주세요.');
+      }
+    } catch (error) {
+      console.error('로그인 요청 실패:', error);
+      setErrorMessage('로그인 요청 실패. 네트워크를 확인해 주세요.');
     }
   };
-
+  
   return (
     <main className={styles.loginContainer}>
       <header className={styles.logoContainer}>

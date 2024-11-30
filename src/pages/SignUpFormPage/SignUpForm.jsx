@@ -72,7 +72,7 @@ const SignUpForm = () => {
     return isValid;
   }, [formData]);
 
-  const handleVerifyClick = useCallback(() => {
+  const handleVerifyClick = useCallback(async () => {
     if (!formData.email) {
       setErrors(prev => ({
         ...prev,
@@ -89,8 +89,31 @@ const SignUpForm = () => {
       return;
     }
 
-    setIsModalOpen(true);
-    setErrors(prev => ({ ...prev, email: '' }));
+    sessionStorage.setItem("email", formData.email);
+    
+    try {
+      const response = await fetch('https://borhg6i9sk.execute-api.ap-northeast-2.amazonaws.com/email_Auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: formData.email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+      if (response.ok) { // Assume the response has a "success" field
+        setIsModalOpen(true);
+        setErrors(prev => ({ ...prev, email: '' }));
+      } else {
+        setErrors(prev => ({ ...prev, email: '인증 요청 실패. 다시 시도해 주세요.' }));
+      }
+    } catch (error) {
+      console.error('Error sending email verification request:', error);
+      setErrors(prev => ({ ...prev, email: '인증 요청 실패. 네트워크를 확인해 주세요.' }));
+    }
   }, [formData.email, validateEmail]);
 
   const handleVerificationSuccess = useCallback(() => {
@@ -99,13 +122,13 @@ const SignUpForm = () => {
     setErrors(prev => ({ ...prev, email: '', form: '' }));
   }, []);
 
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-
+  
     if (!validateForm()) {
       return;
     }
-
+  
     if (!isVerified) {
       setErrors(prev => ({
         ...prev,
@@ -113,9 +136,35 @@ const SignUpForm = () => {
       }));
       return;
     }
-
-    console.log('Form submitted:', formData);
-    setIsSuccessModalOpen(true); // 성공 모달 표시
+  
+    try {
+      const response = await fetch('https://borhg6i9sk.execute-api.ap-northeast-2.amazonaws.com/web_register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          student_id: formData.studentId,
+          password: formData.password,
+          nickname: formData.name,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('서버 응답에 문제가 있습니다.');
+      }
+  
+      // 요청 성공 시 처리
+      const data = await response.json();
+      console.log('가입 성공:', data);
+      setIsSuccessModalOpen(true); // 성공 모달 표시
+    } catch (error) {
+      console.error('가입 요청 실패:', error);
+      setErrors(prev => ({
+        ...prev,
+        form: '가입 요청 실패. 다시 시도해 주세요.',
+      }));
+    }
   }, [formData, isVerified, validateForm]);
 
   const closeSuccessModal = useCallback(() => {

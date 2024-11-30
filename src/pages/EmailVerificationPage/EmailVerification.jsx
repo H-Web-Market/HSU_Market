@@ -1,9 +1,9 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './EmailVerification.module.css';
 
 const EmailVerification = ({ onSuccess }) => {
   const [code, setCode] = useState(['', '', '', '', '', '']);
+  const [error, setError] = useState(''); // 오류 메시지 상태 추가
   const inputRefs = useRef([]);
 
   useEffect(() => {
@@ -28,12 +28,35 @@ const EmailVerification = ({ onSuccess }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const fullCode = code.join('');
-    if (fullCode.length === 6) {
-      console.log('Submitted code:', fullCode);
-      onSuccess(); // 인증 성공 시 콜백 호출
+    const email = sessionStorage.getItem('email');
+
+    if (fullCode.length === 6 && email) {
+      try {
+        const response = await fetch('https://borhg6i9sk.execute-api.ap-northeast-2.amazonaws.com/verification_code', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, verification_code: fullCode }),
+        });
+
+        if (response.ok) {
+          setError('');
+          console.log('Verification successful!');
+          sessionStorage.removeItem("email");
+          onSuccess();
+        } else {
+          setError('잘못된 인증 코드입니다.');
+        }
+      } catch (error) {
+        console.error('Error during verification:', error);
+        setError('네트워크 오류가 발생했습니다. 다시 시도해 주세요.');
+      }
+    } else {
+      setError('모든 입력란이 완료되지 않았습니다.');
     }
   };
 
@@ -61,14 +84,15 @@ const EmailVerification = ({ onSuccess }) => {
               />
             </React.Fragment>
           ))}
+          <button 
+            type="submit" 
+            className={styles.submitButton}
+            aria-label="Submit verification code"
+          >
+            확인
+          </button>
         </div>
-        <button 
-          type="submit" 
-          className={styles.submitButton}
-          aria-label="Submit verification code"
-        >
-          확인
-        </button>
+        {error && <div className={styles.error}>{error}</div>}
       </form>
     </main>
   );

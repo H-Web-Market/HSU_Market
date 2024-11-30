@@ -5,7 +5,7 @@
     gap: 40px 68px;
     overflow: hidden;
     flex-wrap: wrap;
-  }
+}
   
   .mainContent {
     flex-grow: 1;
