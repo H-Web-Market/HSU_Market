@@ -37,3 +37,5 @@ export const ProductForm = () => (
     </button>
   </form>
 );
+
+export default ProductForm;

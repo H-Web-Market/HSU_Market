@@ -1,0 +1,7 @@
+[
+    { "id": 1, "title": "에어팟 프로 1", "price": "200,000원", "description": "이 제품은...", "time": "1시간 전","imageSrc" : "./image.png", "isLiked": false },
+    { "id": 2, "title": "바이레도 블랑쉬 50ml", "price": "150,000원", "description": "이 제품은...", "time": "3시간 전","imageSrc" : "./image.png", "isLiked": false },
+    { "id": 3, "title": "아이폰 13 프로 맥스", "price": "1,000,000원", "description": "이 제품은...", "time": "7시간 전","imageSrc" : "./image.png", "isLiked": false },
+    { "id": 4, "title": "커피 머신", "price": "470,000원", "description": "이 제품은...", "time": "3일 전","imageSrc" : "./image.png", "isLiked": false }
+]
+  

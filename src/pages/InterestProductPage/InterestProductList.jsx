@@ -1,6 +1,6 @@
 import React from "react";
-import Products from "../MainPage/Products"; // 기존 컴포넌트로 전체 목록 처리
-import Banner from "../MainPage/Banner";
+import Products from "../Main/Products"; // 기존 컴포넌트로 전체 목록 처리
+import Banner from "../Main/Banner";
 import styles from "./InterestProductList.module.css";
 
 const InterestProductList = ({ toggleLike, products, searchTerm }) => {

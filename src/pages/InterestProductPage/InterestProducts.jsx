@@ -1,13 +1,20 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react"; 
 import Sidebar from '../mypage/SideBar'; 
 import styles from "./InterestProducts.module.css"; 
 import SearchBar from "../mypage/SearchBar"; 
 import InterestProductList from "./InterestProductList"; 
 import { useNavigate } from 'react-router-dom'; 
  
-export const InterestProducts = ({ products, toggleLike }) => { 
+export const InterestProducts = () => { 
   const navigate = useNavigate(); 
+  const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); 
+  
+  // **1. LocalStorage에서 데이터 불러오기**
+  useEffect(() => {
+    const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(savedProducts);
+  }, []);
  
   const handleNotificationClick = () => { 
     navigate('/notification'); 
@@ -20,6 +27,12 @@ export const InterestProducts = ({ products, toggleLike }) => {
   const handleSearch = (term) => { 
     setSearchTerm(term); 
   }; 
+
+  const toggleLike = (productTitle) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) =>
+        product.title === productTitle ? { ...product, isLiked: !product.isLiked } : product));
+  };
  
   // 좋아요가 눌린 상품만 필터링 
   const likedProducts = products.filter(product => product.isLiked); 

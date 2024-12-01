@@ -1,82 +1,81 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./ProductEdit.module.css";
-import { SplitButton } from 'primereact/splitbutton';
 import Sidebar from "../mypage/SideBar";
 import SearchBar from "../mypage/SearchBar";
-import { ImageUpload } from "./ImageUpload";
-import { ProductForm } from "./ProductForm";
+import ImageUpload from "./ImageUpload";
+import ProductForm from "./ProductForm";
 
-export const ProductEdit = ({ products, onUpdateProduct }) => {
+export const ProductEdit = () => {
     const { title } = useParams(); // URL에서 제품 제목을 가져옵니다.
-    const product = products.find(p => p.title === title); // 제품 정보 검색
-
-    const [price, setPrice] = useState(product.price);
-    const [description, setDescription] = useState(product.description || '');
-    const [category, setCategory] = useState(product.category || '');
-    const [imageSrc, setImageSrc] = useState(product.imageSrc || null);
-    const [imageFile, setImageFile] = useState(null);
-    
+    const navigate = useNavigate();
     const fileInputRef = useRef(null); // 파일 input을 참조하기 위한 ref
 
+    const[product, setProduct] = useState(null);
+    const[products, setProducts]= useState([]);
+    const [price, setPrice] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [imageSrc, setImageSrc] = useState(null);
+    
     const categories = ["가전제품", "패션", "전자기기", "생활용품"]; // 카테고리 목록
-    const navigate = useNavigate();
-    const categoryItems = categories.map(cat => ({
-        label: cat,
-        command: () => setCategory(cat), // 카테고리 설정
-    }));
 
+    // **1. 로컬 스토리지에서 데이터 로드**
     useEffect(() => {
-        if (product) {
-            setPrice(product.price);
-            setDescription(product.description || '');
-            setCategory(product.category || '');
-            setImageSrc(product.imageSrc || null);
+        const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+        setProducts(storedProducts);
+        const currentProduct = storedProducts.find((p) => p.title === title);
+        if (currentProduct) {
+            setProduct(currentProduct);
+            setPrice(currentProduct.price);
+            setDescription(currentProduct.description);
+            setCategory(currentProduct.category);
+            setImageSrc(currentProduct.imageSrc);
         }
-    }, [product]);
-
+    }, [title]);
+      // **이미지 변경**
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            const imageUrl = URL.createObjectURL(file);
+            const imageUrl = URL.createObjectURL(file); // 파일 미리보기 URL 생성
             setImageSrc(imageUrl);
-            setImageFile(file);
         }
     };
-
+    // **3. 상품 수정**
     const handleEdit = () => {
+        if (!product) return;
         const updatedProduct = {
-            title: product.title,
+            ...product,
             price,
-            time: "방금 전", // 예시로 현재 시간을 설정
+            description,
+            category,
             imageSrc,
-            isLiked: product.isLiked,
-            category, // 선택한 카테고리 추가
-            description // 수정된 설명 추가
+            time: "방금 전", // 수정 시간을 업데이트
         };
-        
-        // onUpdateProduct는 상위 컴포넌트에서 전달받은 함수
-        onUpdateProduct(updatedProduct);
+        const updatedProducts = products.map((p) =>
+            p.title === product.title ? updatedProduct : p
+    );
 
-        // 입력 필드 초기화
-        setPrice('');
-        setDescription('');
-        setCategory('');
-        setImageSrc(null);
-        setImageFile(null);
-    };
+    // 업데이트된 데이터 로컬 스토리지에 저장
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    setProducts(updatedProducts);
 
-    const handleEditImageClick = () => {
-        fileInputRef.current.click(); // 버튼 클릭 시 input 요소 클릭
-    };
+    // 홈 페이지로 이동
+    alert("상품이 수정되었습니다.");
+    navigate("/home");
+};
 
-    const handleNotificationClick = () => {
-        navigate('/notification');
-    };
+const handleEditImageClick = () => {
+    fileInputRef.current.click(); // 버튼 클릭 시 input 요소 클릭
+};
+  
+const handleNotificationClick = () => {
+    navigate('/notification');
+};
 
-    const handleUserAvatarClick = () => {
-        navigate('/mypage');
-    };
+const handleUserAvatarClick = () => {
+    navigate('/mypage');
+};
     
 
     return (
@@ -110,7 +109,7 @@ export const ProductEdit = ({ products, onUpdateProduct }) => {
 
                         <div className={styles.productContent}>
                             <div className={styles.imageContainer}>
-                                <ImageUpload/>
+                                <ImageUpload handleImageChange={handleImageChange} imageSrc={imageSrc}/>
                             </div>
                             <div className={styles.productInfoContainer}>
                                 <ProductForm/>
