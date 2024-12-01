@@ -74,7 +74,6 @@
 
 
 .productContent {
-
     display: flex;
     gap: 20px; /* 이미지와 정보 간격 */
     flex-direction: row;
