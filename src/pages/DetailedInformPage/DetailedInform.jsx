@@ -80,7 +80,7 @@ export const DetailedInform = () => {
                             <h1 className={styles.title}>상세 정보</h1>
                         </div>
                         <div className={styles.contentWrapper}>
-                            <section className={styles.productInfo}>
+                            <div className={styles.imageContainer}>
                                 <nav className={styles.category} aria-label="Product category">
                                     카테고리 &gt; {product.category}
                                 </nav>
@@ -89,29 +89,27 @@ export const DetailedInform = () => {
                                     className={styles.productImage}
                                     alt={product.title}
                                 />
-                            </section>
-                            <section className={styles.detailsSection}>
-                                <ProductForm product={product} />
-                            </section>
-                        </div>
-                        <footer className={styles.productActions}>
-                            <div className={styles.likeSection}>
-                                <div
-                                className={styles.likeButton}
-                                onClick={() => toggleLike(product.title)}
-                                style={{
-                                    backgroundImage: `url(${product.isLiked ? filledHeart : emptyHeart})`,
-                                }}
-                                aria-label={`Toggle like for ${product.title}`}/>
-                                <span className={styles.likeCount}>{product.isLiked ? 33 : 32}</span>
+                                <div className={styles.likeSection}>
+                                    <div
+                                    className={styles.likeButton}
+                                    onClick={() => toggleLike(product.title)}
+                                    style={{
+                                        backgroundImage: `url(${product.isLiked ? filledHeart : emptyHeart})`,
+                                    }}
+                                    aria-label={`Toggle like for ${product.title}`}/>
+                                    <span className={styles.likeCount}>{product.isLiked ? 33 : 32}</span>
+                                </div>
+                                <div className={styles.actionButtons}>
+                                    <button 
+                                        className={styles.chatButton} 
+                                        onClick={handleChatBtnClick}
+                                    >
+                                        채팅하기
+                                    </button>
+                                </div>
                             </div>
-                            <div className={styles.actionButtons}>
-                                <button 
-                                    className={styles.chatButton} 
-                                    onClick={handleChatBtnClick}
-                                >
-                                    채팅하기
-                                </button>
+                            <div className={styles.detailsSection}>
+                                <ProductForm product={product} />
                                 <div className={styles.sellerInfo}>
                                     <img
                                         src="https://cdn.builder.io/api/v1/image/assets/TEMP/7034da8a03ce4b89697220952b75e5bb70040125bb2f96edb292d0a74c5dcb1f?placeholderIfAbsent=true&apiKey=8c4d60d027684d439facb424f5fad44b"
@@ -121,7 +119,7 @@ export const DetailedInform = () => {
                                     <span className={styles.sellerName}>hyundo</span>
                                 </div>
                             </div>
-                        </footer>
+                        </div>
                     </div>
                 </section>
             </main>
