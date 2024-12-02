@@ -41,8 +41,9 @@
   
   .userIcons {
     display: flex;
-    gap: 30px;
     align-items: center;
+    justify-content: right;
+    width: 100%;
   }
   
   .notificationIcon {

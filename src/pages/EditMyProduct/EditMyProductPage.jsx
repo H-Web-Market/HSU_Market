@@ -23,6 +23,8 @@ function EditMyProductPage() {
   const handleDeleteProduct = (productId) => {
     const updatedProducts = products.filter((product) => product.id !== productId);
     setProducts(updatedProducts);
+    // Update localStorage
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
   };
 
   // Handle edit product (example: just toggling a placeholder field for demo)
