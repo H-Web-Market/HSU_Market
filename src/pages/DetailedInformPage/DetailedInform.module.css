@@ -4,7 +4,7 @@
   padding: 0 70px 0 0;
   gap: 40px 68px;
   overflow: hidden;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .mainContent {
@@ -56,7 +56,7 @@
     position: relative;
     height: auto; /* 높이를 auto로 변경하여 내용에 따라 조정 */
     width: calc(100%); /* header와 동일하게 수정 */
-    padding: 40px;
+    /* padding: 40px; */
 }
 
 .header{
