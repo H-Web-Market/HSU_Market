@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+ # HSU MARKET🛒
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![HSU MARKET Banner]()
 
-## Available Scripts
+학생들이 학교 내에서 물품을 사고팔 수 있는 **학교 기반 커뮤니티 마켓 웹 애플리케이션**입니다. 학교 이메일 인증을 통해 낯선 사람과의 거래에서 발생하는 **신뢰 문제와 불안감을 해소**할 수 있도록 설계되었으며, 품목별 검색과 가격 비교의 어려움을 해결하여 **직관적이고 안전한 거래 환경**을 제공합니다.
 
-In the project directory, you can run:
+## 목차
+1. [개발 환경](#1-개발-환경) 
+2. [실행 환경](#2-실행-환경)
+3. [설치 방법](#3-설치-방법) 
+4. [주요 기능](#4-주요-기능)
+5. [👥조원](#-조원) 
 
-### `npm start`
+## 1. 개발 환경  
+- **Front-end** : React, React Router, CSS Modules, Axios, Fetch API
+- **Back-end** : Express.js, Node.js, Socket.IO, AWS Lambda, API Gateway, AWS DynamoDB
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 2. 실행 환경
+### 필수 도구
+- **Node.js**: v14.x 이상 (최소 v14.0.0)
+- **npm**: v6.x 이상 (Node.js 설치 시 함께 설치)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 3. 설치 방법 
+### 1. 프로젝트 클론
+```bash
+git clone https://github.com/H-Web-Market/HSU-Market_1130.git
+```
 
-### `npm test`
+### 2. 디렉토리 이동
+```bash
+cd HSU-Market_1130
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. 의존성 설치
+```bash
+npm install
+```
 
-### `npm run build`
+### 4. 프로젝트 실행
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 3. 주요 기능
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<details><summary>사용자 인증 및 보안
+</summary>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 학교 이메일 인증을 통한 **신뢰할 수 있는 사용자 인증** 시스템 구현
+</details>
+<details><summary>상품 등록 및 검색 기능
+</summary>
 
-### `npm run eject`
+- **사용자**는 상품을 이름, 가격, 설명, 카테고리 등을 입력하여 **상품 등록**
+- **검색 기능**: 사용자들은 등록된 상품을 이름, 카테고리 등을 기준으로 검색
+</details>
+<details><summary>실시간 채팅 기능
+</summary>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 구매자와 판매자는 **실시간 채팅**을 통해 상품에 대한 질문과 응답을 주고 받기 가능
+- **Socket.IO**를 사용하여 채팅 메시지가 실시간으로 전달
+</details>
+<details><summary>리뷰 및 평판 관리 기능
+</summary>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 거래 완료 후 **상품에 대한 리뷰 및 평점**을 작성
+- 구매자와 판매자는 평점을 매기고, 리뷰를 남길 수 있음
+- **리뷰 및 평판 시스템**을 통해 안전하고 신뢰할 수 있는 거래 환경을 제공
+</details>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👥 조원   
+- **김준호** (조장) 
+- **김가영** 
+- **윤현도** 
+- **이선빈** 
+   
