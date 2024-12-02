@@ -116,7 +116,7 @@ export const DetailedInform = () => {
                                         className={styles.sellerAvatar}
                                         alt=""
                                     />
-                                    <span className={styles.sellerName}>hyundo</span>
+                                    <span className={styles.sellerName}>{product.nickname}</span>
                                 </div>
                             </section>
                         </div>

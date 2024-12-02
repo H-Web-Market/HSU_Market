@@ -43,7 +43,7 @@ export const ProductEdit = () => {
       ...product,
       ...updatedData,
       imageSrc,
-      time: "방금 전", // 수정 시간을 업데이트
+      time: Date.now(), // 수정 시간을 업데이트
     };
 
     const updatedProducts = products.map((p) =>
