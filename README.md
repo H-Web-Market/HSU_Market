@@ -21,12 +21,12 @@
 ## 3. 설치 방법 
 ### 1. 프로젝트 클론
 ```bash
-git clone https://github.com/H-Web-Market/HSU-Market_1130.git
+git clone [https://github.com/H-Web-Market/HSU-Market_1130.git](https://github.com/H-Web-Market/HSU_Market.git)
 ```
 
 ### 2. 디렉토리 이동
 ```bash
-cd HSU-Market_1130
+cd HSU_Market
 ```
 
 ### 3. 의존성 설치
