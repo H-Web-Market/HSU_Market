@@ -5,10 +5,12 @@ import SideBar from '../mypage/SideBar';
 import SearchBar from './SearchBar';
 import UserProfile from './UserProfile';
 import ProductCard from './ProductCard';
+import avatar from "../data/avatar.png";
 
 function EditMyProductPage() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [isNotificationVisible, setIsNotificationVisible] = useState(false); // 알림 창 상태
 
   // Fetch products from localStorage on component mount
   useEffect(() => {
@@ -32,7 +34,7 @@ function EditMyProductPage() {
   };
 
   const handleNotificationClick = () => {
-    navigate('/notification');
+    setIsNotificationVisible(!isNotificationVisible); // 알림 창 표시 상태 전환
   };
 
   const handleUserAvatarClick = () => {
@@ -62,6 +64,27 @@ function EditMyProductPage() {
               style={{ cursor: 'pointer' }}
             />
           </div>
+          {isNotificationVisible && (
+                <div className={styles.notificationDropdown}>
+                    <h4>알림</h4>
+                    <p>새로운 알림이 있습니다!</p>
+                    <ul className={styles.notificationUl}>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자1: 제품이 입고되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자2: 세일이 시작되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자3: 새로운 메시지가 도착했습니다.</span>
+                        </li>
+                    </ul>
+                    <button onClick={handleNotificationClick}>닫기</button>
+                </div>
+            )}
         </header>
         <UserProfile />
         <section className={styles.contentSection}>
