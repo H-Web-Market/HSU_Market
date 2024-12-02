@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './EditMyProductPage.module.css';
-import SideBar from './SideBar';
+import SideBar from '../mypage/SideBar';
 import SearchBar from './SearchBar';
 import UserProfile from './UserProfile';
 import ProductCard from './ProductCard';
