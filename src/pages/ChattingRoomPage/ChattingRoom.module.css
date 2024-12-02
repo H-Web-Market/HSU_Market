@@ -165,7 +165,7 @@
   height: 50px;
   padding: 5px 10px;
   font-size: 20px;
-  font-family: 'BMHANNAPro', sans-serif;
+  font-weight: bold;
   border-radius: 4px;
   transition: background-color 0.3s ease;
   position: absolute;
@@ -264,6 +264,7 @@
   max-width: 60%;
   background-color: #f0f0f0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  word-wrap: break-word;  /* 긴 단어가 줄바꿈 되도록 함 */
 }
 
 .myMessage .messageBubble {

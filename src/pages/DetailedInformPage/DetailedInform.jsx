@@ -118,7 +118,7 @@ export const DetailedInform = () => {
                                         className={styles.sellerAvatar}
                                         alt=""
                                     />
-                                    <span className={styles.sellerName}>hyundo</span>
+                                    <span className={styles.sellerName}>{localStorage.getItem("nickname")}</span>
                                 </div>
                             </div>
                         </footer>

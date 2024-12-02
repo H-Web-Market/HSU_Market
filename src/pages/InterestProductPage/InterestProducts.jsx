@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; 
-import Sidebar from '../mypage/SideBar'; 
+import Sidebar from '../ChatPage/SideBar'; 
 import styles from "./InterestProducts.module.css"; 
 import SearchBar from "../mypage/SearchBar"; 
 import InterestProductList from "./InterestProductList"; 
