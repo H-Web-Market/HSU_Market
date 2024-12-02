@@ -4,11 +4,13 @@ import styles from "./InterestProducts.module.css";
 import SearchBar from "../mypage/SearchBar"; 
 import InterestProductList from "./InterestProductList"; 
 import { useNavigate } from 'react-router-dom'; 
+import avatar from "../data/avatar.png";
  
 export const InterestProducts = () => { 
   const navigate = useNavigate(); 
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); 
+  const [isNotificationVisible, setIsNotificationVisible] = useState(false); // 알림 창 상태
   
   // **1. LocalStorage에서 데이터 불러오기**
   useEffect(() => {
@@ -17,7 +19,7 @@ export const InterestProducts = () => {
   }, []);
  
   const handleNotificationClick = () => { 
-    navigate('/notification'); 
+    setIsNotificationVisible(!isNotificationVisible); // 알림 창 표시 상태 전환
   }; 
  
   const handleUserAvatarClick = () => { 
@@ -58,6 +60,27 @@ export const InterestProducts = () => {
               onClick={handleUserAvatarClick} 
               style={{ cursor: 'pointer' }} 
             /> 
+            {isNotificationVisible && (
+                <div className={styles.notificationDropdown}>
+                    <h4>알림</h4>
+                    <p>새로운 알림이 있습니다!</p>
+                    <ul className={styles.notificationUl}>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자1: 제품이 입고되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자2: 세일이 시작되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자3: 새로운 메시지가 도착했습니다.</span>
+                        </li>
+                    </ul>
+                    <button onClick={handleNotificationClick}>닫기</button>
+                </div>
+            )}
           </div> 
         </header> 
           <InterestProductList 
