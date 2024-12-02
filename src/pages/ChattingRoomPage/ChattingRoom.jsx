@@ -10,10 +10,12 @@ import styles from './ChattingRoom.module.css';
 // 상품 샘플 이미지 경로 
 import Product1Img from '../../assets/image/Product1.jpeg';
 import Profile1Img from '../../assets/image/Profile1.jpeg';
+import io from 'socket.io-client';  // socket.io-client 임포트
 
 const ChattingRoom = () => {
   const { chatId } = useParams(); // 채팅방 ID 가져오기
   const navigate = useNavigate();  // navigate 함수 선언
+  const socket = io('http://localhost:4000'); // 서버 URL에 맞춰 수정 필요
 
   const [selectedChatId, setSelectedChatId] = useState(parseInt(chatId));
   const [isComposing, setIsComposing] = useState(false);
@@ -21,8 +23,8 @@ const ChattingRoom = () => {
   const [rating, setRating] = useState(null); // 상대방 평점 상태 추가
   const [chatRooms, setChatRooms] = useState([
     { id: 1, name: '상대방 이름 1', lastMessage: '마지막 메시지 1', profileImg: Profile1Img, productImg: Product1Img, lastMessageDate: new Date() },
-    { id: 2, name: '상대방 이름 2', lastMessage: '마지막 메시지 2', profileImg: '', productImg: 'Product2Img', lastMessageDate: new Date() - 86400000 }, // 어제
-    { id: 3, name: '상대방 이름 3', lastMessage: '마지막 메시지 3', profileImg: '', productImg: 'Product3Img', lastMessageDate: new Date() - 2592000000 }, // 1달 전
+    { id: 2, name: '상대방 이름 2', lastMessage: '마지막 메시지 2', profileImg: Profile1Img, productImg: Product1Img, lastMessageDate: new Date() - 86400000 }, // 어제
+    { id: 3, name: '상대방 이름 3', lastMessage: '마지막 메시지 3', profileImg: Profile1Img, productImg: Product1Img, lastMessageDate: new Date() - 2592000000 }, // 1달 전
   ]);
 
   const [messages, setMessages] = useState({}); // 채팅방별 메시지를 저장하는 객체
@@ -48,6 +50,22 @@ const ChattingRoom = () => {
     loadMessagesForChatRoom(chatId); // 채팅방 ID에 맞는 메시지 로드
   }, [chatId]);
 
+  useEffect(() => {
+    socket.emit('joinRoom', chatId);
+
+    socket.on('message', (newMessage) => {
+      setMessages((prevMessages) => ({
+        ...prevMessages,
+        [chatId]: [...(prevMessages[chatId] || []), newMessage],
+      }));
+    });
+
+    return () => {
+      socket.emit('leaveRoom', chatId);
+      socket.off('message');
+    };
+  }, [chatId]);
+
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
@@ -60,6 +78,8 @@ const ChattingRoom = () => {
         sender: "me",
         timestamp: new Date(),
       };
+
+      socket.emit('chatMessage', chatId, newMessage); // 서버로 메시지 전송
 
       setMessages((prevMessages) => {
         const updatedMessages = {
@@ -79,9 +99,19 @@ const ChattingRoom = () => {
         return updatedMessages;
       });
 
-      setMessage(""); // 메시지 전송 후 입력 필드 비우기
+      setMessage("");
     }
   };
+
+  useEffect(() => {
+    socket.on('message', (newMessage) => {
+      newMessage.timestamp = new Date(newMessage.timestamp); // 타임스탬프를 Date 객체로 변환
+      setMessages((prevMessages) => ({
+        ...prevMessages,
+        [chatId]: [...(prevMessages[chatId] || []), newMessage],
+      }));
+    });
+  }, [chatId, socket]);
 
   useEffect(() => {
     if (chatMessagesRef.current) {

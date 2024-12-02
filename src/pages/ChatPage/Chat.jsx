@@ -17,8 +17,8 @@ const Chat = () => {
 
   const chatRooms = [
     { id: 1, name: '상대방 이름 1', lastMessage: '마지막 메시지 1', profileImg: Profile1Img, productImg: Product1Img },
-    { id: 2, name: '상대방 이름 2', lastMessage: '마지막 메시지 2', profileImg: '', productImg: 'product2.jpg' },
-    { id: 3, name: '상대방 이름 3', lastMessage: '마지막 메시지 3', profileImg: '', productImg: 'product3.jpg' },
+    { id: 2, name: '상대방 이름 2', lastMessage: '마지막 메시지 2', profileImg: Profile1Img, productImg: Product1Img },
+    { id: 3, name: '상대방 이름 3', lastMessage: '마지막 메시지 3', profileImg: Profile1Img, productImg: Product1Img },
   ];
 
   const getProfileImage = (profileImg) => {

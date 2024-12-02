@@ -23,8 +23,8 @@ function UserProfile() {
           className={styles.profileImage} 
         />
         <div className={styles.userDetails}>
-          <p className={styles.userId}>2071015</p>
-          <h2 className={styles.userName}>hyundo</h2>
+          <p className={styles.userId}>{localStorage.getItem("student_id")}</p>
+          <h2 className={styles.userName}>{localStorage.getItem("nickname")}</h2>
         </div>
       </div>
       <div className={styles.userRating}>

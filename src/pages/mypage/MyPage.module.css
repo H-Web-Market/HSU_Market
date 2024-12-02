@@ -7,20 +7,22 @@
     flex-wrap: wrap;
 }
   
-  .mainContent {
-    flex-grow: 1;
-    flex-basis: 0;
-    width: fit-content;
-    margin: auto 0;
-  }
+.mainContent {
+  flex-grow: 1; 
+  flex-basis: 0; 
+  width: 100%;  
+  margin: 0;    
+  padding-top: 55px;  
+}
   
-  .pageHeader {
-    display: flex;
-    justify-content: space-between; /* 기존 정렬 유지 */
-    align-items: center;
-    position: relative; /* 타이틀 절대 위치 조정 위해 추가 */
-    width: 100%;
-    gap: 20px;
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  gap: 20px;
+  padding: 0; /* 상단 패딩 제거 */
 }
 
 .pageTitle {

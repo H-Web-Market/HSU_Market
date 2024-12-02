@@ -156,6 +156,8 @@ const SignUpForm = () => {
   
       // 요청 성공 시 처리
       const data = await response.json();
+      localStorage.setItem("student_id", formData.studentId);
+      localStorage.setItem("nickname", formData.name);
       console.log('가입 성공:', data);
       setIsSuccessModalOpen(true); // 성공 모달 표시
     } catch (error) {
