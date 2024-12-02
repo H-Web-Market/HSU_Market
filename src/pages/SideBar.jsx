@@ -55,7 +55,6 @@ function Sidebar() {
 
   return (
     <aside className={styles.sideBar}>
-      <div className={styles.logo} />
       <nav className={styles.navList}>
         {icons.map((icon, index) => (
           <button

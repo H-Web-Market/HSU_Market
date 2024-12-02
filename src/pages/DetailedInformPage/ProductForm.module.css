@@ -1,10 +1,11 @@
 .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 21px;
+  gap: 30px;
   color: rgb(104, 103, 110);
   font: 400 20px BM HANNA_TTF, -apple-system, Roboto, Helvetica, sans-serif;
-  width: 90%;
+  width: 100%;
+  height: 100%;
 }
 
 .formInput,
@@ -14,11 +15,12 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   padding: 15px 30px;
   width: (100%-30px);
+  height: 25px;
   border: none;
 }
 
 .formTextarea {
-  min-height: 216px;
+  min-height: 220px;
   resize: vertical;
 }
 

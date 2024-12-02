@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styles from "./ProductRegist.module.css";
-import Sidebar from "../mypage/SideBar";
+import Sidebar from "../SideBar";
 import SearchBar from "../mypage/SearchBar";
 import ImageUpload from "./ImageUpload";
 import ProductForm from "./ProductForm";
 import { useNavigate } from "react-router-dom";
+import avatar from "../data/avatar.png";
 
 export const ProductRegist = () => {
   const [title, setTitle] = useState("");
@@ -12,6 +13,7 @@ export const ProductRegist = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [imageSrc, setImageSrc] = useState(null); // Base64 이미지 저장
+  const [isNotificationVisible, setIsNotificationVisible] = useState(false); // 알림 창 상태
 
   const navigate = useNavigate();
   const categories = ["가전제품", "패션", "전자기기", "생활용품"];
@@ -29,6 +31,7 @@ export const ProductRegist = () => {
       time: Date.now(), // 현재 시간을 저장
       imageSrc, // Base64 이미지 데이터
       isLiked: false,
+      userId : localStorage.getItem("student_id")
     };
 
     // 기존 데이터와 병합 후 저장
@@ -71,7 +74,7 @@ export const ProductRegist = () => {
   
 
   const handleNotificationClick = () => {
-    navigate("/notification");
+    setIsNotificationVisible(!isNotificationVisible); // 알림 창 표시 상태 전환
   };
 
   const handleUserAvatarClick = () => {
@@ -99,6 +102,27 @@ export const ProductRegist = () => {
               onClick={handleUserAvatarClick}
               style={{ cursor: "pointer" }}
             />
+            {isNotificationVisible && (
+                <div className={styles.notificationDropdown}>
+                    <h4>알림</h4>
+                    <p>새로운 알림이 있습니다!</p>
+                    <ul className={styles.notificationUl}>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자1: 제품이 입고되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자2: 세일이 시작되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자3: 새로운 메시지가 도착했습니다.</span>
+                        </li>
+                    </ul>
+                    <button onClick={handleNotificationClick}>닫기</button>
+                </div>
+            )}
           </div>
         </header>
         <section className={styles.contentSection}>

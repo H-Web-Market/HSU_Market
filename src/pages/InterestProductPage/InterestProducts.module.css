@@ -1,10 +1,12 @@
 .mainContainer { 
   background-color: #f2f2f2; 
   display: flex; 
-  padding: 0 70px 0 0; 
+  padding: 0 70px 0 0;
   gap: 40px 68px; /* Consistent gap setting */
+  height: 100%;
   overflow: hidden; 
   /* flex-wrap: wrap;  */
+  margin-left: 72px;
 } 
  
 .mainContent { 
@@ -13,6 +15,8 @@
   width: 100%;  
   margin: 0;    
   padding-top: 55px;  
+  padding-bottom: 55px;
+  margin-left: 72px;
 } 
  
 .pageHeader { 
@@ -49,6 +53,38 @@
   gap: 20px; 
   align-items: flex-start; 
 } 
+
+.notificationDropdown {
+  position: absolute; /* 부모 요소에 대해 절대 위치 설정 */
+  right: 20px; /* 오른쪽 여백 */
+  top: 70px; /* 헤더 아래 위치 */
+  background-color: white; /* 배경색 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  padding: 10px; /* 내부 여백 */
+  width: 300px; /* 고정 너비 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.notificationUl {
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+  margin: 0; /* 기본 마진 제거 */
+}
+
+.notificationLi {
+  display: flex; /* 이미지와 텍스트 정렬을 위해 flex 사용 */
+  align-items: center; /* 수직 정렬 */
+  margin-left: 10px; /* 왼쪽 마진 추가 (필요에 따라 조정) */
+  padding: 5px 0; /* 상하 패딩 추가 */
+}
+
+.notificationAvatar {
+  width: 30px; /* 아바타 너비 */
+  height: 30px; /* 아바타 높이 */
+  border-radius: 50%; /* 둥글게 만들기 */
+  margin-right: 10px; /* 아바타와 텍스트 간 간격 */
+}
  
 @media (max-width: 991px) { 
   .mainContainer { 

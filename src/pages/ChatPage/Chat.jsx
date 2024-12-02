@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Chat.module.css';
-import SideBar from './SideBar';  // SideBar 컴포넌트 임포트
+import SideBar from '../SideBar';  // SideBar 컴포넌트 임포트
 
 // 이미지 임포트
 import Product1Img from '../../assets/image/Product1.jpeg';

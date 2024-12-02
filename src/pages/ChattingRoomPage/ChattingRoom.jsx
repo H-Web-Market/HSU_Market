@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import SideBar from './SideBar'; // 분리된 사이드바 컴포넌트 import
+import SideBar from '../SideBar'; // 분리된 사이드바 컴포넌트 import
 import defaultProfile from '../../assets/image/DefaultProfile.png';
 import sendIcon from '../../assets/image/Send.png';
 import starIcon from '../../assets/image/Star.png';

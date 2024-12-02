@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./DetailedInform.module.css";
-import Sidebar from "../mypage/SideBar";
+import Sidebar from "../SideBar";
 import SearchBar from "../mypage/SearchBar";
 import { ProductForm } from "./ProductForm";
 import emptyHeart from "../data/emptyheart.png";
@@ -80,7 +80,7 @@ export const DetailedInform = () => {
                             <h1 className={styles.title}>상세 정보</h1>
                         </div>
                         <div className={styles.contentWrapper}>
-                            <div className={styles.imageContainer}>
+                            <section className={styles.productInfo}>
                                 <nav className={styles.category} aria-label="Product category">
                                     카테고리 &gt; {product.category}
                                 </nav>
@@ -89,17 +89,17 @@ export const DetailedInform = () => {
                                     className={styles.productImage}
                                     alt={product.title}
                                 />
-                                <div className={styles.likeSection}>
-                                    <div
-                                    className={styles.likeButton}
-                                    onClick={() => toggleLike(product.title)}
-                                    style={{
-                                        backgroundImage: `url(${product.isLiked ? filledHeart : emptyHeart})`,
-                                    }}
-                                    aria-label={`Toggle like for ${product.title}`}/>
-                                    <span className={styles.likeCount}>{product.isLiked ? 33 : 32}</span>
-                                </div>
-                                <div className={styles.actionButtons}>
+                                <div className={styles.likeAndChat}>
+                                    <div className={styles.likeSection}>
+                                        <div
+                                        className={styles.likeButton}
+                                        onClick={() => toggleLike(product.title)}
+                                        style={{
+                                            backgroundImage: `url(${product.isLiked ? filledHeart : emptyHeart})`,
+                                        }}
+                                        aria-label={`Toggle like for ${product.title}`}/>
+                                        <span className={styles.likeCount}>{product.isLiked ? 33 : 32}</span>
+                                    </div>
                                     <button 
                                         className={styles.chatButton} 
                                         onClick={handleChatBtnClick}
@@ -107,8 +107,8 @@ export const DetailedInform = () => {
                                         채팅하기
                                     </button>
                                 </div>
-                            </div>
-                            <div className={styles.detailsSection}>
+                            </section>
+                            <section className={styles.detailsSection}>
                                 <ProductForm product={product} />
                                 <div className={styles.sellerInfo}>
                                     <img
@@ -118,7 +118,7 @@ export const DetailedInform = () => {
                                     />
                                     <span className={styles.sellerName}>hyundo</span>
                                 </div>
-                            </div>
+                            </section>
                         </div>
                     </div>
                 </section>

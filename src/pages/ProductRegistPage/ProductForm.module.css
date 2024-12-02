@@ -1,7 +1,7 @@
 .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 21px;
+  gap: 22px;
   color: rgb(104, 103, 110);
   font: 400 20px BM HANNA_TTF, -apple-system, Roboto, Helvetica, sans-serif;
   width: 90%;
