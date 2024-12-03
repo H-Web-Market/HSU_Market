@@ -43,6 +43,11 @@ function EditMyProductPage() {
     navigate('/mypage');
   };
 
+  const filteredProducts = products.filter(
+    (product) => product.userId === localStorage.getItem("student_id")
+  );
+
+
   return (
     <div className={styles.myPageContainer}>
       <SideBar />
@@ -92,7 +97,7 @@ function EditMyProductPage() {
         <section className={styles.contentSection}>
           <h2 className={styles.sectionTitle}>판매중인 물품</h2>
           <section className={styles.productsGrid}>
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <ProductCard
                 product={product}
                 onDelete={() => handleDeleteProduct(product.id)}

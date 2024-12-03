@@ -6,6 +6,7 @@ import SearchBar from "../mypage/SearchBar";
 import { ProductForm } from "./ProductForm";
 import emptyHeart from "../data/emptyheart.png";
 import filledHeart from "../data/heart.svg";
+import avatar from "../data/avatar.png";
 
 export const DetailedInform = () => {
     const { title } = useParams(); // URL 파라미터에서 제목 가져오기
@@ -13,6 +14,7 @@ export const DetailedInform = () => {
 
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState(null);
+    const [isNotificationVisible, setIsNotificationVisible] = useState(false); // 알림 창 상태
 
     // localStorage에서 products 데이터 가져오기
     useEffect(() => {
@@ -24,7 +26,7 @@ export const DetailedInform = () => {
     }, [title]);
 
     const handleNotificationClick = () => {
-        navigate('/notification');
+        setIsNotificationVisible(!isNotificationVisible); // 알림 창 표시 상태 전환
     };
 
     const handleUserAvatarClick = () => {
@@ -72,6 +74,27 @@ export const DetailedInform = () => {
                             onClick={handleUserAvatarClick}
                             style={{ cursor: 'pointer' }}
                         />
+                        {isNotificationVisible && (
+                <div className={styles.notificationDropdown}>
+                    <h4>알림</h4>
+                    <p>새로운 알림이 있습니다!</p>
+                    <ul className={styles.notificationUl}>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자1: 제품이 입고되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자2: 세일이 시작되었습니다.</span>
+                        </li>
+                        <li className={styles.notificationLi}>
+                            <img className={styles.notificationAvatar} alt="User Avatar" src={avatar} />
+                            <span> 사용자3: 새로운 메시지가 도착했습니다.</span>
+                        </li>
+                    </ul>
+                    <button onClick={handleNotificationClick}>닫기</button>
+                </div>
+            )}
                     </div>
                 </header>
                 <section className={styles.contentSection}>

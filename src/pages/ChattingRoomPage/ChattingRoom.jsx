@@ -284,7 +284,7 @@ const ChattingRoom = () => {
         {/* 리뷰 작성 모달 */}
         {isReviewOpen && (
           <div className={styles.reviewModal}>
-            <AddReview />
+            <AddReview closeModal={toggleReviewModal} />
             <button className={styles.closeReviewModal} onClick={toggleReviewModal}>닫기</button>
           </div>
         )}
